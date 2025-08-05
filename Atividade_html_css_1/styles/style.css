@@ -1,0 +1,97 @@
+/*Parágrafos*/
+p {
+    font-size: larger;
+    text-align: start;
+    font-size: 30px;
+}
+
+/*Cabeçalhos*/
+h1 {
+    text-align: center;
+    font-size: 40px;
+    color:#2b1b0f
+}
+
+body {
+    margin: 40px 100px;
+    background-color: #e4cfa0;
+    font-family: Arial, sans-serif;
+}
+
+.descricao {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-right: 0;
+    color: #2b1b0f;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.container {
+    /*Transforma em um Flexbox - Isso faz com que os itens filhos (texto e imagem) fiquem um ao lado do outro automaticamente, em vez de empilhados (comportamento padrão do HTML)*/
+    display: flex;
+
+    /*Empurra o texto para a esquerda e a imagem para a direita, com espaço entre eles.*/
+    justify-content: space-between;
+
+    /*Alinha ambos pelo topo (senão poderiam ficar centralizados verticalmente)*/
+    align-items: flex-start;
+
+    margin-top: 50px;
+
+    /*Adiciona um espaço entre a descrição e a imagem*/
+    gap: 30px;
+}
+
+ul {
+    font-size: 26px;
+    margin-top: 10px;
+}
+
+.foto {
+    width: 350px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.icones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.icons {
+    width: 40px;
+    height: auto;
+}
+
+.video {
+    flex: 2;
+}
+
+.video video{
+    flex: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.container-videos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0;
+    gap: 30px;
+}
+
+.container-videos.invertido {
+    flex-direction: row-reverse;
+}
+
+.negrito {
+    font-weight: 700;
+}
