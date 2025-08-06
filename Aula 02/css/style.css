@@ -1,12 +1,13 @@
 table,th,td{
 border: 1px solid cadetblue;
 border-collapse: collapse;
-border-top: 4px solid green;
-border-bottom:4px solid green;
+border-top: 4px solid rgb(0, 0, 0);
+border-bottom:4px solid rgb(0, 0, 0);
 border-left: 4px solid black ;
 border-right: 4px solid black;
 margin-left: 65px;
 padding: 8px;
+text-align: center; /* Text-align: Center centralizara todo o texto no meio seja da tabela ou do parágrafo*/
 }
 
 th{
