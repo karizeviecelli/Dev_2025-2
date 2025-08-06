@@ -1,0 +1,16 @@
+table , th , td{
+    border: 1px solid rebeccapurple;
+
+    border-collapse: collapse;
+
+    border-style: solid;
+    margin-left: 25px;
+    padding: 5px;
+
+    
+}
+
+th{
+    border-top: 2px solid rebeccapurple;
+    padding-left: 16px;
+}
