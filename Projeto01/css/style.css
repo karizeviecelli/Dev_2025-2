@@ -1,0 +1,16 @@
+table,th,td {
+    border: 1px solid red;
+    border-collapse: collapse;
+    border-style: double;
+    border-top: 2px solid green;
+    margin-left: 25px;
+    padding: 10px
+}
+
+th{
+    border-top: 2px solid green;
+    border-bottom: 3px solid blue;
+    border-left: 5px solid yellow;
+    border-right: 5px solid pink;
+    padding-left: 16px;
+}
