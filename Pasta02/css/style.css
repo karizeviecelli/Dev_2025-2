@@ -1,0 +1,15 @@
+table, th,td{
+    border: 2px solid purple ;
+    border-collapse: collapse;
+    border-style: solid;
+    margin-left: 25px ;
+    padding: 5px;
+   
+}
+th{
+     border-top: 2px solid blueviolet;
+     border-bottom: 3px solid blue;
+     border-left: 2px solid yellow;
+     border-radius: 2px solid red;
+     padding-left: 7px;
+}
