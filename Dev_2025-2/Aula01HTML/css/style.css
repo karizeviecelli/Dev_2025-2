@@ -1,0 +1,46 @@
+h1{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border: 5px solid  rgb(168, 164, 164); ;
+}
+h2{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+  
+}
+body{
+    background-color: silver;
+    
+    
+}
+p{
+    background-color: white;
+    font-size: 30px;
+    border-color: blue;
+    border: 5px solid  rgb(168, 164, 164); ;
+
+}
+a{
+    display: flex;
+    justify-content: center; 
+    height: 200px;
+    
+    
+}
+ol{
+    background-color: white;
+    text-align: center;
+    
+     
+}
+div{
+    border: 3px solid rgb(168, 164, 164); 
+    padding: 20px;
+}
+img{
+    border: 5px solid  rgb(168, 164, 164); ;
+}
+
+
