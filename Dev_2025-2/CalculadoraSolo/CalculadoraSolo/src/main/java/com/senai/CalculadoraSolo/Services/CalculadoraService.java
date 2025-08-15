@@ -18,28 +18,31 @@ public class CalculadoraService {
             resultado.setNumero1(dados.getNumero1());
             resultado.setNumero2(dados.getNumero2());
             resultado.setResultado(dados.getNumero1()+ dados.getNumero2());
+            resultado.setOperacao(dados.getOperacao());
             return resultado;
 
         } else if (dados.getOperacao().equals("-")) {
 
             resultado.setNumero1(dados.getNumero1());
             resultado.setNumero2(dados.getNumero2());
-            resultado.setResultado(dados.getNumero1()- dados.getNumero1());
+            resultado.setResultado(dados.getNumero1()- dados.getNumero2());
+            resultado.setOperacao(dados.getOperacao());
             return resultado;
 
         } else if (dados.getOperacao().equals("/")) {
 
             resultado.setNumero1(dados.getNumero1());
             resultado.setNumero2(dados.getNumero2());
-            resultado.setResultado(dados.getNumero1()/dados.getNumero1());
+            resultado.setResultado(dados.getNumero1()/dados.getNumero2());
+            resultado.setOperacao(dados.getOperacao());
             return resultado;
 
         } else if (dados.getOperacao().equals("*")) {
 
             resultado.setNumero1(dados.getNumero1());
             resultado.setNumero2(dados.getNumero2());
-            resultado.setResultado(dados.getNumero1()*dados.getNumero1());
             resultado.setOperacao(dados.getOperacao());
+            resultado.setResultado(dados.getNumero1()*dados.getNumero2());
             return resultado;
         }
         return null;
