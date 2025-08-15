@@ -19,55 +19,36 @@ public class CalculadoraController {
     }
 
     //-- POST http://localhost:8080/calc/somar
-    @PostMapping("/somar")
-    public ResponseEntity<SaidaDto> somar(@RequestBody EntradaDto numeros){
-        //instancia um objeto do tipo SaidaDto
-        SaidaDto resultado = new SaidaDto();
-        //faz a soma dos numeros que vem da EntradDto e coloca dentro do atributo resultado da classe SaidaDto
-        resultado.setResultado(numeros.getN1() + numeros.getN2());
-        //Colocando os valores para devolver na corpo de retorno do JSON
+
+    @PostMapping("/somarS")
+    public ResponseEntity<SaidaDto> somarService(@RequestBody EntradaDto numeros){
+        SaidaDto resultado = service.somar(numeros);
         resultado.setN1(numeros.getN1());
         resultado.setN2(numeros.getN2());
-        //retorna a SaidaDto
         return ResponseEntity.ok().body(resultado);
     }
 
     @PostMapping("/subtrair")
     public ResponseEntity<SaidaDto> subtrair(@RequestBody EntradaDto numeros){
-        SaidaDto resultado = new SaidaDto();
-
-        resultado.setResultado(numeros.getN1() - numeros.getN2());
+        SaidaDto resultado = service.subtrair(numeros);
         resultado.setN1(numeros.getN1());
         resultado.setN2(numeros.getN2());
-
-        return ResponseEntity.ok(resultado);
-    }
-
-    @PostMapping("/multiplicar")
-    public ResponseEntity<SaidaDto> multiplicar(@RequestBody EntradaDto numeros){
-        SaidaDto resultado = new SaidaDto();
-
-        resultado.setResultado(numeros.getN1()+ numeros.getN2());
-        resultado.setN1(numeros.getN1());
-        resultado.setN2(numeros.getN2());
-
-        return ResponseEntity.ok(resultado);
+        return ResponseEntity.ok().body(resultado);
     }
 
     @PostMapping("/dividir")
     public ResponseEntity<SaidaDto> dividir(@RequestBody EntradaDto numeros){
-        SaidaDto resultado = new SaidaDto();
-
-        resultado.setResultado(numeros.getN1() / numeros.getN2());
+        SaidaDto resultado = service.dividir(numeros);
         resultado.setN1(numeros.getN1());
         resultado.setN2(numeros.getN2());
-
-        return ResponseEntity.ok(resultado);
+        return ResponseEntity.ok().body(resultado);
     }
 
-    @PostMapping("/somarS")
-    public ResponseEntity<SaidaDto> somarService(@RequestBody EntradaDto numeros){
-        SaidaDto resultado = service.somar(numeros);
+    @PostMapping("/multiplicar")
+    public ResponseEntity<SaidaDto> multiplicar(@RequestBody EntradaDto numeros){
+        SaidaDto resultado = service.multiplicar(numeros);
+        resultado.setN1(numeros.getN1());
+        resultado.setN2(numeros.getN2());
         return ResponseEntity.ok().body(resultado);
     }
 
