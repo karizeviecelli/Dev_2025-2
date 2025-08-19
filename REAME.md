@@ -1,4 +1,5 @@
 
+
 # 💻 Projeto Desenvovimento de Sistemas – Senai - 2025
 
 Este é o repositório base para os projetos dos alunos do Desenvolvimento de Sistema - Turma 2024/2. Cada aluno deve criar seu próprio branch e desenvolver o projeto, seguindo as orientações.
