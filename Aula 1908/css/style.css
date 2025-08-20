@@ -1,0 +1,42 @@
+body{
+    width: 80%;
+    margin:auto;
+    background-color: beige;
+}
+h1{
+    color: white;
+    text-align: center;
+    background-color: chocolate;
+}
+img{
+    image-rendering: auto;
+    height: 30px;
+    width: 100%;
+}
+fieldset{
+    background-color: aliceblue;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}
+button{
+    margin-top: 10px;
+    margin-right: 10px;
+    align-items: center;
+    border-radius: 5px;
+    color: aliceblue;
+    font-style: oblique;
+    background-color: brown;
+}
+ul,li{
+    display: flex;
+    text-decoration: none;
+    margin: 10px;
+}
+li{
+    margin: 3px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+   
+}
