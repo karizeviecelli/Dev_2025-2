@@ -1,0 +1,45 @@
+body{
+    width: 80%;
+    margin: auto;
+    background-color: rgb(166, 250, 246);
+}
+h1{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(116, 238, 247);
+    margin: 10px;
+}
+img{
+    image-rendering: auto;
+    width: 80%;
+}
+fieldset{
+    background-color: aliceblue;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}
+button{
+    margin-top: 10px;
+    margin-right: 5px;
+    background-color: rgb(255, 255, 255);
+    margin: 10px auto 0 auto;
+    display: block;
+}
+ul,li{
+    text-decoration: none;
+    display: inline-flex;
+    margin: 3px;
+}
+a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: large;
+    font-family: 'Arial Black'
+}
+li{
+    margin: 3px;
+    background-color: rgb(39, 194, 255);
+    border-radius: 5px;
+    padding: 5px;
+}
