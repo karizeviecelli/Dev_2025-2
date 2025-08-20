@@ -1,0 +1,55 @@
+body{
+
+    width: 80%;
+    margin: auto;
+    background-color: darkgrey;
+    margin: 10px;
+}
+
+h1{
+
+    color: darkslategrey;
+    text-align: center;
+    background-color: dimgray;
+
+}
+
+fieldset{
+
+    background-color: darkgray;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+button{
+
+    margin-top: 10px;
+    margin-right: 5px;
+    color: aliceblue;
+    font-style: initial;
+    
+    background-color: darkslategray;
+}
+
+ul,li{
+ 
+    text-decoration: none;
+    display: inline-flex;
+    margin: 3px;
+
+}
+
+a{
+    text-decoration: none;
+    color: dimgrey;
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+li{
+    margin: 3px;
+    background-color:darkslategray;
+    border-radius: 5px;
+    padding: 5px;
+}
