@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabelas</title>
     <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
+   
 </head>
 
 <body>
@@ -16,32 +16,33 @@
     <hr>
     <br>
 
+    <!---Table Cria o elemento table =  Tabela, define como elemento principal do html-->
     <table>
 
-        <tr>
-            <th>Nome</th>
-            <th>Email</th>
+        <tr>  <!-- Define uma linha dentro da tabela -->
+            <th>Nome</th> <!--Cria células que serão o cabeçalho da nossa tabela, exemplo excel = Telefone -->
+            <th colspan="2">Email</th> <!--Colspan permite que uma célular ocupe várias linhas horizontalmente, basta informar a quantidade que desejar dentro do aspas-->
             <th>Telefone</th>
         </tr>
 
 
         <tr>
-            <td>Maria</td>
-            <td>bsfdsf@gmai.com</td>
-            <td>123456789</td>
+            <td>Maria</td> <!--Aqui é a inserção de dados, cria células aonde irão as informações exemplo = 479932123-->
+            <td colspan="1">bsfdsf@gmadadadadadaddadadasadasadadadasdadasdai.com</td>
+            <td rowspan="3" colspan="3">123456789</td> <!--Rolspan permite que uma célular ocupe várias linhas verticalmente, basta informar a quantidade que desejar dentro do aspas-->
         </tr>
 
         <tr>
 
             <th>Sexo</th>
             <th>idade</td>
-            <th>Profissão</th>
+            <th >Profissão</th>
 
          <tr>
 
             <td>Feminino</td>
             <td>19</td>
-            <td> Engenheira</td>
+            <td > Engenheira</td>
 
         </tr>
 
