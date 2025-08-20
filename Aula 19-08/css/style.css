@@ -1,0 +1,55 @@
+body{
+    width: 80%;
+    margin: auto;
+    background-color: cadetblue;
+}
+h1{
+    color: rgb(244, 244, 248);
+    text-align: center;
+    background-color: chocolate;
+    margin: 10px;
+}
+img{
+    image-rendering: auto;
+    width: 100%;
+}
+fieldset{
+    background-color: aliceblue;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    width: 50%;
+  
+    margin: auto;
+}
+button{
+    margin-top: 10px;
+    margin-right: 5px;
+    color: aliceblue;
+    background-color: rgb(22, 22, 225);
+
+}
+
+ul, li{   
+    text-decoration: none;   
+    display: inline-flex;
+    margin: 3px;  
+    
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-size:large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+    
+}
+
+li{
+    margin: 3px; 
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+   
+}
