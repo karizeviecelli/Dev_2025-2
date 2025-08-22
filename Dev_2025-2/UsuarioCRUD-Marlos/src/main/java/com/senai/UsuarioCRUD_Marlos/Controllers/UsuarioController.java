@@ -21,8 +21,11 @@ public class UsuarioController {
     @PostMapping("/usuario")
     public ResponseEntity<RespostaDto> cadastro (@RequestBody RequisicaoDto dados){
 
+        RespostaDto resultado = service.adicionarUsuario(dados);
+            return ResponseEntity.ok().body(resultado);
 
     }
+
 
 
 
