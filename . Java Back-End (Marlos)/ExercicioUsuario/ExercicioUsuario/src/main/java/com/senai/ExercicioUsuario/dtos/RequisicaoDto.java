@@ -1,7 +1,6 @@
 package com.senai.ExercicioUsuario.dtos;
 
 public class RequisicaoDto {
-    private int id;
     private String nome;
     private String login;
     private String senha;
@@ -9,19 +8,10 @@ public class RequisicaoDto {
     public RequisicaoDto() {
     }
 
-    public RequisicaoDto(int id, String nome, String login, String senha) {
-        this.id = id;
+    public RequisicaoDto(String nome, String login, String senha) {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNome() {
