@@ -4,7 +4,7 @@ public class RequisicaoDto {
 
     private String nome;
     private String login;
-    private Double senha;
+    private String senha;
 
     public RequisicaoDto() {
     }
@@ -17,11 +17,11 @@ public class RequisicaoDto {
         this.login = login;
     }
 
-    public Double getSenha() {
+    public String getSenha() {
         return senha;
     }
 
-    public void setSenha(Double senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 

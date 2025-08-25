@@ -4,7 +4,7 @@ public class UsuarioModel {
 
     private Integer id;
     private String nome;
-    private Double senha;
+    private String senha;
     private String login;
 
     @Override
@@ -44,11 +44,11 @@ public class UsuarioModel {
         this.nome = nome;
     }
 
-    public Double getSenha() {
+    public String getSenha() {
         return senha;
     }
 
-    public void setSenha(Double senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 }
