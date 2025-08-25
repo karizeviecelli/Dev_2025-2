@@ -2,6 +2,7 @@ package com.senai.ExercicioUsuario.controllers;
 
 import com.senai.ExercicioUsuario.dtos.*;
 import com.senai.ExercicioUsuario.services.UsuarioService;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,13 @@ public class UsuarioController {
     public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
+
+    //Resumo dos métodos http:
+    //POST - Criar usuario: /crud/usuario
+    //PUT - Editar usuario: /crud/usuario/{id}
+    //GET - Listar usuario por ID: /crud/usuario/{id}
+    //GET - Listar todos os usuarios: /crud/usuarios
+    //DELETE - Deletar um usuario: /crud/usuario/{id}
 
     @PostMapping("/usuario")
     public ResponseEntity<MensagemDto> adicionarUsuario(@RequestBody RequisicaoDto dados){
@@ -39,16 +47,20 @@ public class UsuarioController {
 
     //busca usuario por id
     @GetMapping("/usuario/{id}")
-    public ResponseEntity<Object> buscaUsuarioPorId(@PathVariable(value = "id")int id){
-        Object object = usuarioService.buscarUsuarioId(id);
-        if(object == "Usuário não encontrado"){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(object);
+    public ResponseEntity<Object> buscaUsuarioPorId(@PathVariable int id){
+        Object respostaDto = usuarioService.buscarUsuarioId(id);
+        if(respostaDto instanceof RespostaDto){
+            return ResponseEntity.ok().body(respostaDto);
         }
-        return ResponseEntity.ok().body(object);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(respostaDto);
     }
 
     //atualiza usuario por id
-
+    @PutMapping("/usuario/{id}")
+    public ResponseEntity<MensagemDto> atualizarUsuario(@PathVariable(value = "id") int id, @RequestBody RequisicaoDto dados){
+        MensagemDto mensagem = usuarioService.alterarUsuario(id, dados);
+        return ResponseEntity.ok().body(mensagem);
+    }
 
     //remove usuario
     @DeleteMapping("/usuario/{id}")

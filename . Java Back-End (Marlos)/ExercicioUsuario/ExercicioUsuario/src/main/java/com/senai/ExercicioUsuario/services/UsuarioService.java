@@ -13,16 +13,19 @@ import java.util.List;
 public class UsuarioService {
     private List<UsuarioModel> usuarios = new ArrayList<>();
     private int ultimoId = 0;
-    private UsuarioModel usuarioModel = new UsuarioModel();
-    private MensagemDto mensagem = new MensagemDto();
-    private RespostaDto resposta = new RespostaDto();
 
     //metodo para criar usuarios
     public MensagemDto adicionarUsuario(RequisicaoDto dados){
+        MensagemDto mensagem = new MensagemDto();
+        UsuarioModel usuarioModel = new UsuarioModel();
         for (UsuarioModel usuario : usuarios){
             if (dados.getLogin().equals(usuario.getLogin())){
                 //pensar numa solução para retornar erro
                 mensagem.setMensagemUsuario("Login já existente");
+                return mensagem;
+            }
+            if (dados.getNome().isEmpty() || dados.getSenha().isEmpty() || dados.getLogin().isEmpty()){
+                mensagem.setMensagemUsuario("Preencha todos os campos!");
                 return mensagem;
             }
         }
@@ -35,9 +38,7 @@ public class UsuarioService {
         //adicionando no Array
         usuarios.add(usuarioModel);
 
-
         mensagem.setMensagemUsuario("Usuário cadastrado com sucesso");
-        System.out.println(usuarioModel);
         return mensagem;
     }
 
@@ -61,6 +62,8 @@ public class UsuarioService {
 
     //metodo para devolver usuarios por id
     public Object buscarUsuarioId(int id){
+        RespostaDto resposta = new RespostaDto();
+        MensagemDto mensagem = new MensagemDto();
         for (UsuarioModel usuario : usuarios){
             if (id == usuario.getId()){
                 resposta.setId(usuario.getId());
@@ -70,7 +73,7 @@ public class UsuarioService {
                 return resposta;
             }
         }
-        mensagem.setMensagemUsuario("Usuário não encontrado");
+        mensagem.setMensagemUsuario("Nenhum usuário foi encontrado com esse ID");
         return mensagem;
     }
 
@@ -78,10 +81,31 @@ public class UsuarioService {
     //metodo para atualizar usuarios por id
     //Não deixar atualizar caso aquele login já exista
     //Deixar atualizar "nome, senha" sem alterar o login
+    public MensagemDto alterarUsuario(int id, RequisicaoDto dados){
+        MensagemDto mensagem = new MensagemDto();
 
+        for(UsuarioModel usuario : usuarios){
+            if (dados.getLogin().equals(usuario.getLogin())){
+
+            }
+        }
+
+        for(UsuarioModel usuario : usuarios){
+            if (id == usuario.getId()){
+                usuario.setLogin(dados.getLogin());
+                usuario.setNome(dados.getNome());
+                usuario.setSenha(dados.getSenha());
+                mensagem.setMensagemUsuario("Usuario atualizado!");
+                return mensagem;
+            }
+        }
+        mensagem.setMensagemUsuario("Usuário não foi atualizado por algu motivo");
+        return mensagem;
+    }
 
     //metodo para deletar usuarios
     public MensagemDto deletarUsuario(int id){
+        MensagemDto mensagem = new MensagemDto();
         for (UsuarioModel usuario : usuarios){
             if (id == usuario.getId()){
                 usuarios.remove(usuario);
