@@ -3,18 +3,32 @@ package com.senai.UsuarioCRUD_Marlos.Dtos;
 public class RespostaDto {
 
     private String nome;
-    private Double senha;
-    private String email;
+    private String senha;
+    private String login;
     private  String msg;
 
     public RespostaDto() {
     }
 
-    public Double getSenha() {
+    public RespostaDto(String nome, String senha, String msg) {
+        this.nome = nome;
+        this.senha = senha;
+        this.msg = msg;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
         return senha;
     }
 
-    public void setSenha(Double senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 
@@ -24,14 +38,6 @@ public class RespostaDto {
 
     public void setMsg(String msg) {
         this.msg = msg;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getNome() {
