@@ -1,9 +1,12 @@
 package com.senai.UsuarioCRUD_Marlos.Services;
 
+import com.senai.UsuarioCRUD_Marlos.Dtos.MsgDto;
 import com.senai.UsuarioCRUD_Marlos.Dtos.RequisicaoDto;
 import com.senai.UsuarioCRUD_Marlos.Dtos.RespostaDto;
 import com.senai.UsuarioCRUD_Marlos.Models.UsuarioModel;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +29,7 @@ public class UsuarioService {
 
     UsuarioModel usuario = new UsuarioModel();
 
-     usuario.setId(proximoId);
+     usuario.setId(proximoId++);
      usuario.setNome(dados.getNome());
      usuario.setLogin(dados.getLogin());
      usuario.setSenha(dados.getSenha());
@@ -43,7 +46,7 @@ public class UsuarioService {
         RespostaDto respostaDto = new RespostaDto();
 
         for (UsuarioModel busca : listaUser) {
-            if (busca.getId().equals(proximoId)) {
+            if (busca.getId().equals(id)) {
                 listaUser.remove(busca);
                respostaDto.setMsg("Usuário excluido com sucesso!");
                break;
@@ -69,5 +72,25 @@ public class UsuarioService {
          }
 
         return resposta;
+    }
+
+    // Preciso do RespostaDTo pois preciso imprimir os dados do usuário, e preciso do pathvariable int id pois vou buscar o usuário por id
+    public RespostaDto buscaUsuario(@PathVariable  int id ){
+
+        RespostaDto buscandoU = new RespostaDto();
+
+
+        //passo verificando se que está dentro do scanner é igual ao oque o usuário solicitou
+        for (UsuarioModel busca : listaUser){
+                if (id == busca.getId()){
+                    //Adiciono as informações que estavam dentor do ListaUser eu passo para o busca, e do busca eu passo para o buscandoU, pois o model não pode passar as informações direto.
+                    buscandoU.setLogin(busca.getLogin());
+                    buscandoU.setNome(busca.getNome());
+                    buscandoU.setSenha(busca.getSenha());
+                    return buscandoU;
+                }
+        }//retorno as informações do usuário por id
+        buscandoU.setMsg("Usuário não encontrado!");
+        return buscandoU;
     }
 }

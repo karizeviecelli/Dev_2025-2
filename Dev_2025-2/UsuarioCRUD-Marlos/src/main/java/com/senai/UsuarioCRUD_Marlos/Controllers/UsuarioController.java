@@ -49,6 +49,12 @@ public class UsuarioController {
         return ResponseEntity.ok().body(listagem);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<RespostaDto> buscarUsuario(@PathVariable (value = "id")int id){
+        RespostaDto resposta = service.buscaUsuario(id);
+        return ResponseEntity.ok().body(resposta);
+    }
+
 
 
 
