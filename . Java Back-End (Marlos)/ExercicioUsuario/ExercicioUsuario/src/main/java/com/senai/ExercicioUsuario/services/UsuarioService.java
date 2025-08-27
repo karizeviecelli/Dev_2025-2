@@ -99,7 +99,7 @@ public class UsuarioService {
                 return mensagem;
             }
         }
-        mensagem.setMensagemUsuario("Usuário não foi atualizado por algu motivo");
+        mensagem.setMensagemUsuario("Usuário não foi atualizado por algum motivo");
         return mensagem;
     }
 

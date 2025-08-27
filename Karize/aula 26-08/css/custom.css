@@ -1,0 +1,10 @@
+p {
+    text-align: center;
+    border: 2px solid #00f;
+    background: greenyellow;
+    color: #009;
+    border: #009 solid;
+    padding: 3px 10px;
+    display: inline;
+    cursor: pointer;
+}
