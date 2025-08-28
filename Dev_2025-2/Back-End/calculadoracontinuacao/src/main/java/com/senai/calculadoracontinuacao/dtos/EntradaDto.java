@@ -8,6 +8,7 @@ public class EntradaDto {
     private Double n2;
 
 
+
     //construtor da classe
     public EntradaDto() {
         setN1(0d);// também da para fazer this.n1 = 0d; mas é melhor fazer via set

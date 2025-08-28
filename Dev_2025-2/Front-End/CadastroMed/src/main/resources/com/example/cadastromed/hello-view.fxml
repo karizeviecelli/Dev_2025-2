@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="615.0" style="-fx-background-color: #FABE70;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cadastromed.Controller.HelloController">
+   <children>
+      <TextField fx:id="nomePaciente" layoutX="51.0" layoutY="68.0" prefHeight="26.0" prefWidth="168.0" promptText="Nome.." />
+      <Text layoutX="71.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Paciente" />
+      <TextField fx:id="nomeMedico" layoutX="402.0" layoutY="68.0" prefHeight="26.0" prefWidth="168.0" promptText="Nome.." />
+      <Text layoutX="426.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Médico" />
+      <TextField fx:id="idadePaciente" layoutX="51.0" layoutY="120.0" prefHeight="26.0" prefWidth="168.0" promptText="Idade.." />
+      <TextField fx:id="idadeMedico" layoutX="402.0" layoutY="120.0" prefHeight="26.0" prefWidth="168.0" promptText="Idade.." />
+      <TextField fx:id="cpfPaciente" layoutX="50.0" layoutY="178.0" prefHeight="26.0" prefWidth="168.0" promptText="Cpf.." />
+      <TextField fx:id="cpfMedico" layoutX="402.0" layoutY="178.0" prefHeight="26.0" prefWidth="168.0" promptText="Cpf.." />
+      <TextField fx:id="sexoPaciente" layoutX="50.0" layoutY="238.0" prefHeight="26.0" prefWidth="168.0" promptText="Sexo.." />
+      <TextField fx:id="especialidadeMedico" layoutX="402.0" layoutY="238.0" prefHeight="26.0" prefWidth="168.0" promptText="Especialidade.." />
+      <Button layoutX="73.0" layoutY="286.0" mnemonicParsing="false" onAction="#botaoPaciente" text="Cadastre Paciente" />
+      <Button layoutX="429.0" layoutY="286.0" mnemonicParsing="false" onAction="#botaoMedico" text="Cadastre Médico" />
+      <Button layoutX="252.0" layoutY="276.0" mnemonicParsing="false" onAction="#botaoListas" prefHeight="46.0" prefWidth="111.0" text="Listas de Médicos e Pacientes" textAlignment="CENTER" wrapText="true" />
+   </children>
+</AnchorPane>
