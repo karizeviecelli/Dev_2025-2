@@ -59,6 +59,12 @@ public class UsuarioController {
     @PutMapping("/usuario/{id}")
     public ResponseEntity<MensagemDto> atualizarUsuario(@PathVariable(value = "id") int id, @RequestBody RequisicaoDto dados){
         MensagemDto mensagem = usuarioService.alterarUsuario(id, dados);
+        if (mensagem.getMensagemUsuario().equals("Login já existente!")){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mensagem);
+        }
+        if (mensagem.getMensagemUsuario().equals("Usuário não existe ou não foi encontrado!")) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mensagem);
+        }
         return ResponseEntity.ok().body(mensagem);
     }
 
