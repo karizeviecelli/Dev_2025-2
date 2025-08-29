@@ -1,9 +1,7 @@
 package com.senai.UsuarioCRUD_Marlos.Services;
 
-import com.senai.UsuarioCRUD_Marlos.Dtos.AuthenticacaoDto;
-import com.senai.UsuarioCRUD_Marlos.Dtos.MsgDto;
-import com.senai.UsuarioCRUD_Marlos.Dtos.RequisicaoDto;
-import com.senai.UsuarioCRUD_Marlos.Dtos.RespostaDto;
+import com.senai.UsuarioCRUD_Marlos.Dtos.*;
+import com.senai.UsuarioCRUD_Marlos.Models.CategoriaModel;
 import com.senai.UsuarioCRUD_Marlos.Models.UsuarioModel;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +14,11 @@ public class UsuarioService {
 
 
     List<UsuarioModel> listaUser = new ArrayList<>();
+    List<CategoriaModel>listCategoria = new ArrayList<>();
+    List<ProdutoDto> produtoDtoList = new ArrayList<>();
+
     private int proximoId = 1;
+    private Long idCategoria = 1L;
 
     public RespostaDto adicionarUsuario(RequisicaoDto dados) {
         RespostaDto resposta = new RespostaDto();
@@ -109,5 +111,32 @@ public class UsuarioService {
 
         msg.setMsg("Login inválido, por getileza verificar Login e senha!");
         return msg;
+    }
+
+    public MsgDto adicionarCategoria(CategoriaDto dados){
+        MsgDto msg = new MsgDto();
+
+            CategoriaModel categoria = new CategoriaModel();
+
+            categoria.setId(idCategoria++);
+            categoria.setNome(dados.getNome());
+            listCategoria.add(categoria);
+            msg.setMsg("Categoria cadastrada!");
+
+        return msg;
+    }
+
+    public List<CategoriaDto> listaDeCategorias(){
+        List<CategoriaDto> listando = new ArrayList<>();
+        MsgDto msg = new MsgDto();
+
+        for (CategoriaModel valida : listCategoria){
+            CategoriaDto alimentando = new CategoriaDto();
+
+            alimentando.setNome(valida.getNome());
+            alimentando.setId(valida.getId());
+            listando.add(alimentando);
+        }
+        return listando;
     }
 }
