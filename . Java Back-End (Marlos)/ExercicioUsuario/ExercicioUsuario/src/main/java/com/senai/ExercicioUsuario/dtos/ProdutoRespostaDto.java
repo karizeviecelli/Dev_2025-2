@@ -4,12 +4,12 @@ public class ProdutoRespostaDto {
     private Long id;
     private String nome;
     private Double preco;
-    private Long categoria;
+    private String categoria;
 
     public ProdutoRespostaDto() {
     }
 
-    public ProdutoRespostaDto(Long id, String nome, Double preco, Long categoria) {
+    public ProdutoRespostaDto(Long id, String nome, Double preco, String categoria) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
@@ -40,11 +40,11 @@ public class ProdutoRespostaDto {
         this.preco = preco;
     }
 
-    public Long getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Long categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 }
