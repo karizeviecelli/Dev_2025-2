@@ -13,8 +13,8 @@ public class ProdutoService {
 
     List<CategoriaModel> categorias = new ArrayList<>();
     List<ProdutoModel> produtos = new ArrayList<>();
-    private Long categoriaId = (long) 0;
-    private Long produtoId = (long) 0;
+    private Long categoriaId = 0L;
+    private Long produtoId = 0L;
 
     // ------------------CATEGORIA----------------------
     public MensagemDto cadastrarCategoria(CategoriaRequisicaoDto nome) {

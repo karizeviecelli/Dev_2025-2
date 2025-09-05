@@ -1,7 +1,7 @@
 package com.senai.ExercicioUsuario.dtos;
 
 public class RespostaDto {
-    private int id;
+    private Long id;
 
     private String nome;
     private String login;
@@ -35,15 +35,15 @@ public class RespostaDto {
         this.senha = senha;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public RespostaDto(int id, String nome, String login, String senha) {
+    public RespostaDto(Long id, String nome, String login, String senha) {
         this.id = id;
         this.nome = nome;
         this.login = login;

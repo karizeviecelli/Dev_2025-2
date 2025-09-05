@@ -2,6 +2,7 @@ package com.senai.ExercicioUsuario.services;
 
 import com.senai.ExercicioUsuario.dtos.*;
 import com.senai.ExercicioUsuario.models.UsuarioModel;
+import com.senai.ExercicioUsuario.repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +13,13 @@ import java.util.List;
 @Service
 public class UsuarioService {
     private List<UsuarioModel> usuarios = new ArrayList<>();
-    private int ultimoId = 0;
+    private Long ultimoId = 0L;
+
+    private final UsuarioRepository repository;
+
+    public UsuarioService(UsuarioRepository repository){
+        this.repository=repository;
+    }
 
     //metodo para criar usuarios
     public MensagemDto adicionarUsuario(RequisicaoDto dados) {
