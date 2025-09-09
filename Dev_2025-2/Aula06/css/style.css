@@ -1,0 +1,19 @@
+body{
+    width: 80%;
+    margin: auto;
+    background-color: brown;
+}
+h1{
+    text-align: center;
+    margin-top: 100px;
+}
+form{
+    background-color: white;
+    margin: 10px;
+}
+label,input{
+    margin: 10px;
+    
+}
+
+
