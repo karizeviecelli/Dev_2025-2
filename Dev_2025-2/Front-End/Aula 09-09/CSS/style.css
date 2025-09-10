@@ -1,0 +1,25 @@
+body{
+     width: 80%;
+     margin: auto;
+     background-color: rgb(82, 124, 126);
+}
+
+h1{
+    text-align: center;
+    margin-top: 105px;
+
+}
+form{
+    margin: 5px;
+    background-color: rgb(255, 255, 255);
+   
+}
+
+
+
+input,label{
+    align-items: center;
+    display: flex;
+    padding: 4x;  
+    text-align: center;
+}
