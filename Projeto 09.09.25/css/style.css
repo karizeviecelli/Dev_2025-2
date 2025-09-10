@@ -1,0 +1,31 @@
+body{
+
+    width: 80%;
+    margin:auto;
+    background-color: rgb(210, 138, 30);
+      
+}
+
+h1{
+    text-align: center;
+    margin-top: 150px;
+
+}
+form{
+    padding: 150px;
+    margin: 5px;
+    text-align: left;
+    width: 50%;
+}
+
+label, input{
+    margin: 5px;
+    text-align: left;
+}
+button{
+
+}
+
+legend{
+    color: blue;
+}

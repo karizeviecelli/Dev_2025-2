@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>Formulário</h1>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <form action="#">
+                <fieldset>
+                    <legend>cadastro pessoa</legend>
+                    <label for="nome">Nome:</label>
+                    <br>
+                    <input type="text" placeholder="nome completo" required>
+                    <br>
+                    <label for="email">Email:</label>
+                    <br>
+                    <input type="email" placeholder="email" required>
+                    <br>
+                    <label for="idade">Idade:</label>
+                    <br>
+                    <input type="number" placeholder="idade" required>
+                    <br>
+                    <label for="senha">Senha: </label>
+                    <br>
+                    <input type="password" placeholder="digite uma senha com mais de 6 caracteres" required>
+                    <br>
+                    <br>
+                    <button>cadastrar</button>
+
+                </fieldset>
+                <fieldset>
+                    <select name="cidade" id="cidade">
+                        <option value="Blumenau">Blumenau</option>
+                        <option value="Gaspar">Gaspar</option>
+                        <option value="Indaial">Indaial</option>
+
+
+                    </select>
+                </fieldset>
+                <legend>
+
+
+                </legend>
+                <input type="checkbox" id="bairro" value="vila nova">
+                <label for="bairro">Vila nova</label>
+                <input type="checkbox" id="bairro" value="vitor konder">
+                <label for="bairro">Vitor Konder</label>
+                <input type="checkbox" ide="bairro" value="garcia">
+                <label for="bairro">Garcia</label>
+                <br><br>
+                <div>
+                    <input type="radio" id="escola" value="Vitor Hering">
+                    <label for="escola">Vitor Hering</label>
+                </div>
+                <div>
+                    <input type="radio" id="escola" value="Machado Assis">
+                    <label for="escola">Machado Assis</label>
+                </div>
+                <div>
+                    <input type="radio" id="escola" value="Elza Pacheco">
+                    <label for="escola">Elza Pacheco</label>
+                </div>
+
+            </form>
+        </section>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
