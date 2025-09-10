@@ -58,6 +58,6 @@ function dividir() {
         console.log("não possivel dividir por 0")
     }
     
-    
+    /
 
 }
