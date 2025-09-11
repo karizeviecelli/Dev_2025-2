@@ -1,18 +1,22 @@
 package com.senai.ExercicioUsuario.models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
-@Entity
-@Table(name = "Usuario")
+@Entity //identifica como tabela
+@Table(name = "Usuario") //nome da tabela
 public class UsuarioModel {
-    @Id
-    
+    @Id//Indica que o atributo ID é chave primaria
+    @GeneratedValue (strategy = GenerationType.IDENTITY) // indica o auto incremento
     private Long id;
+
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "login" , unique = true) //Unique = true cria um indice unico CHAMADA DE UK - UNIQUE KEY.
     private String login;
+
+    @Column(name = "senha")
     private String senha;
 
     public UsuarioModel() {
