@@ -27,7 +27,7 @@ public class LoginController {
         if (mensagem.getMensagemUsuario().equals("Autenticação bem-sucedida!")){
             return ResponseEntity.ok().body(mensagem);
         }
-
+        
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(mensagem);
     }
 

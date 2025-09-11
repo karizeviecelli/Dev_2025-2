@@ -2,15 +2,21 @@ package com.senai.ExercicioUsuario.models;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "usuario")
 public class UsuarioModel {
-    @Id
-    @GeneratedValue()
+
+    @Id //--Indica que o atributo ID é a chave primaria
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String nome;
+
+    @Column(unique = true, nullable = false)
     private String login;
+
+    @Column(nullable = false)
     private String senha;
 
     public UsuarioModel() {

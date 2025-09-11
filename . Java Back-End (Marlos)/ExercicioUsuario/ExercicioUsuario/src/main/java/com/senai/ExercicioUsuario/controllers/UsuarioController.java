@@ -47,7 +47,7 @@ public class UsuarioController {
 
     //busca usuario por id
     @GetMapping("/usuario/{id}")
-    public ResponseEntity<Object> buscaUsuarioPorId(@PathVariable int id) {
+    public ResponseEntity<Object> buscaUsuarioPorId(@PathVariable Long id) {
         Object respostaDto = usuarioService.buscarUsuarioId(id);
         if (respostaDto instanceof RespostaDto) {
             return ResponseEntity.ok().body(respostaDto);
@@ -57,7 +57,7 @@ public class UsuarioController {
 
     //atualiza usuario por id
     @PutMapping("/usuario/{id}")
-    public ResponseEntity<MensagemDto> atualizarUsuario(@PathVariable(value = "id") int id, @RequestBody RequisicaoDto dados) {
+    public ResponseEntity<MensagemDto> atualizarUsuario(@PathVariable(value = "id") Long id, @RequestBody RequisicaoDto dados) {
         MensagemDto mensagem = usuarioService.alterarUsuario(id, dados);
         if (mensagem.getMensagemUsuario().equals("Login já existente!")) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mensagem);
@@ -70,7 +70,7 @@ public class UsuarioController {
 
     //remove usuario
     @DeleteMapping("/usuario/{id}")
-    public ResponseEntity<MensagemDto> removeUsuario(@PathVariable(value = "id") int id) {
+    public ResponseEntity<MensagemDto> removeUsuario(@PathVariable(value = "id") Long id) {
         MensagemDto mensagemDto = usuarioService.deletarUsuario(id);
         if (mensagemDto.getMensagemUsuario().equals("Usuario deletado com sucesso")) {
             return ResponseEntity.ok().body(mensagemDto);
