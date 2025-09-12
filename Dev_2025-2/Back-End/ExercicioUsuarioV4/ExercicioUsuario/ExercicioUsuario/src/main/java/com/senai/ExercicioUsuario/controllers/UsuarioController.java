@@ -47,7 +47,7 @@ public class UsuarioController {
 
     //busca usuario por id
     @GetMapping("/usuario/{id}")
-    public ResponseEntity<Object> buscaUsuarioPorId(@PathVariable int id) {
+    public ResponseEntity<Object> buscaUsuarioPorId(@PathVariable Long id) {
         Object respostaDto = usuarioService.buscarUsuarioId(id);
         if (respostaDto instanceof RespostaDto) {
             return ResponseEntity.ok().body(respostaDto);
@@ -70,7 +70,7 @@ public class UsuarioController {
 
     //remove usuario
     @DeleteMapping("/deletar/{id}")
-    public ResponseEntity<MensagemDto> removeUsuario(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<MensagemDto> removeUsuario (@PathVariable(value = "id") Long id) {
         MensagemDto mensagemDto = usuarioService.deletarUsuario(id);
         if (mensagemDto.getMensagemUsuario().equals("Usuario deletado com sucesso")) {
             return ResponseEntity.ok().body(mensagemDto);

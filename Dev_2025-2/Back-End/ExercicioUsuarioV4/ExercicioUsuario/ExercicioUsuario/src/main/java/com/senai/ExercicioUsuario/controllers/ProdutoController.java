@@ -41,12 +41,12 @@ public class ProdutoController {
     }
 
     //Get Listar todos os produtos por determinada categoria
-    @GetMapping("/{id}")
-    public ResponseEntity<ProdutoRespostaDto> listaProdutoPorId(@PathVariable(value = "id") Long id) {
-        ProdutoRespostaDto resposta = produtoService.listaProdutoPorId(id);
-        if (resposta.getNome() == null){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resposta);
-        }
-        return ResponseEntity.ok().body(resposta);
+   // @GetMapping("/{id}")
+   // public ResponseEntity<ProdutoRespostaDto> listaProdutoPorId(@PathVariable(value = "id") Long id) {
+       // ProdutoRespostaDto resposta = produtoService.listaProdutoPorId(id);
+//if (resposta.getNome() == null){
+//return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resposta);
+       // }
+     //   return ResponseEntity.ok().body(resposta);
     }
-}
+

@@ -1,9 +1,22 @@
 package com.senai.ExercicioUsuario.models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Produto")
 public class ProdutoModel {
+
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column (name = "Produto")
     private String nome;
+
+    @Column (name = "Preco")
     private Double preco;
+
+    @Column (name = "CategoriaiD")
     private Long categoriaId;
 
     public ProdutoModel() {

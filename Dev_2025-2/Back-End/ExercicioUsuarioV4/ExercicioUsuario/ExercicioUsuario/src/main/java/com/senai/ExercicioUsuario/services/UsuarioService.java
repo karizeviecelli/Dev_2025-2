@@ -41,7 +41,9 @@ public class UsuarioService {
     public List<RespostaDto> listaUsuarios() {
         List<RespostaDto> listaUsuarioDto = new ArrayList<>();
 
-        for (UsuarioModel usuario : usuarios) {
+       List<UsuarioModel> listadeUsuarioDto = repository.findAll();
+
+        for (UsuarioModel usuario : listadeUsuarioDto) {
             RespostaDto respostaDto = new RespostaDto();
 
             respostaDto.setId(usuario.getId());
@@ -51,23 +53,27 @@ public class UsuarioService {
 
             listaUsuarioDto.add(respostaDto);
         }
+
         return listaUsuarioDto;
     }
 
 
     //metodo para devolver usuarios por id
-    public Object buscarUsuarioId(int id) {
+    public Object buscarUsuarioId(Long id) {
         RespostaDto resposta = new RespostaDto();
         MensagemDto mensagem = new MensagemDto();
-        for (UsuarioModel usuario : usuarios) {
-            if (id == usuario.getId()) {
-                resposta.setId(usuario.getId());
-                resposta.setLogin(usuario.getLogin());
-                resposta.setNome(usuario.getNome());
-                resposta.setSenha(usuario.getSenha());
-                return resposta;
-            }
-        }
+
+      Optional<UsuarioModel> usuarioOP = repository.findById(id);
+
+      if (usuarioOP.isPresent()){
+          resposta.setId(usuarioOP.get().getId());
+          resposta.setNome(usuarioOP.get().getNome());
+          resposta.setSenha(usuarioOP.get().getSenha());
+          resposta.setLogin(usuarioOP.get().getLogin());
+          return resposta;
+      }
+
+
         mensagem.setMensagemUsuario("Nenhum usuário foi encontrado com esse ID");
         return mensagem;
     }

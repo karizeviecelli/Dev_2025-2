@@ -11,43 +11,10 @@ import java.util.List;
 @Service
 public class ProdutoService {
 
-    List<CategoriaModel> categorias = new ArrayList<>();
     List<ProdutoModel> produtos = new ArrayList<>();
-    private Long categoriaId = (long) 0;
+
     private Long produtoId = (long) 0;
-
-    // ------------------CATEGORIA----------------------
-    public MensagemDto cadastrarCategoria(CategoriaRequisicaoDto nome) {
-        MensagemDto mensagem = new MensagemDto();
-        CategoriaModel categoriaNova = new CategoriaModel();
-        for (CategoriaModel categoria : categorias) {
-            if (categoria.getNome().equals(nome.getNome())) {
-                mensagem.setMensagemUsuario("Esse nome de categoria já existe");
-                return mensagem;
-            }
-        }
-        categoriaId++;
-        categoriaNova.setId(categoriaId);
-        categoriaNova.setNome(nome.getNome());
-        categorias.add(categoriaNova);
-        mensagem.setMensagemUsuario("Categoria cadastrada");
-
-        return mensagem;
-    }
-
-    public List<CategoriaRespostaDto> listaCategorias() {
-        List<CategoriaRespostaDto> lista = new ArrayList<>();
-
-        for (CategoriaModel categoria : categorias) {
-            CategoriaRespostaDto categoriaR = new CategoriaRespostaDto();
-
-            categoriaR.setId(categoria.getId());
-            categoriaR.setNome(categoria.getNome());
-            lista.add(categoriaR);
-        }
-        return lista;
-    }
-
+    List<CategoriaModel> categorias = new ArrayList<>();
 
     // ------------------PRODUTO----------------------
     public MensagemDto cadastrarProduto(ProdutoRequisicaoDto dados) {
@@ -77,6 +44,10 @@ public class ProdutoService {
         return mensagem;
     }
 
+
+
+
+
     public List<ProdutoRespostaDto> listarProdutos() {
         List<ProdutoRespostaDto> lista = new ArrayList<>();
 
@@ -99,21 +70,7 @@ public class ProdutoService {
         return lista;
     }
 
-    public ProdutoRespostaDto listaProdutoPorId(Long id) {
-        ProdutoRespostaDto resposta = new ProdutoRespostaDto();
 
-        for (ProdutoModel produto : produtos) {
-            if (id == produto.getId()){
-                resposta.setId(produto.getId());
-                resposta.setNome(produto.getNome());
-                resposta.setPreco(produto.getPreco());
-                for (CategoriaModel categoria : categorias){
-                    if (produto.getCategoriaId() == categoria.getId()){
-                        resposta.setCategoria(categoria.getNome());
-                    }
-                }
-            }
-        }
-        return resposta;
-    }
+
+
 }

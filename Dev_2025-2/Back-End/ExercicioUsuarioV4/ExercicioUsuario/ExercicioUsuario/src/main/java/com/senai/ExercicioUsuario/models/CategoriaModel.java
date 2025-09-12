@@ -1,7 +1,15 @@
 package com.senai.ExercicioUsuario.models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Categoria")
 public class CategoriaModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "nome")
     private String nome;
 
     public CategoriaModel() {
