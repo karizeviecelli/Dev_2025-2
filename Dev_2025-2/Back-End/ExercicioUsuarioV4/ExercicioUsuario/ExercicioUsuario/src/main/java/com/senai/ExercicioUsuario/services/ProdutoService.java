@@ -1,75 +1,97 @@
 package com.senai.ExercicioUsuario.services;
 
-import com.senai.ExercicioUsuario.dtos.*;
-import com.senai.ExercicioUsuario.models.CategoriaModel;
+import com.senai.ExercicioUsuario.dtos.MensagemDto;
+import com.senai.ExercicioUsuario.dtos.ProdutoRequisicaoDto;
+import com.senai.ExercicioUsuario.dtos.ProdutoRespostaDto;
 import com.senai.ExercicioUsuario.models.ProdutoModel;
+import com.senai.ExercicioUsuario.repositories.ProdutoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProdutoService {
 
     List<ProdutoModel> produtos = new ArrayList<>();
 
-    private Long produtoId = (long) 0;
-    List<CategoriaModel> categorias = new ArrayList<>();
+    public ProdutoRepository repository;
 
-    // ------------------PRODUTO----------------------
-    public MensagemDto cadastrarProduto(ProdutoRequisicaoDto dados) {
-        MensagemDto mensagem = new MensagemDto();
-        for (CategoriaModel categoria : categorias) {
-            if (categoria.getId() == dados.getCategoriaId()) {
-                //Impede de criar nome já cadastrado
-                for (ProdutoModel produto : produtos) {
-                    if (produto.getNome().equals(dados.getNome())) {
-                        mensagem.setMensagemUsuario("Produto com esse nome já cadastrado!");
-                        return mensagem;
-                    }
-                }
-
-                ProdutoModel produtoM = new ProdutoModel();
-                produtoId++;
-                produtoM.setId(produtoId);
-                produtoM.setNome(dados.getNome());
-                produtoM.setPreco(dados.getPreco());
-                produtoM.setCategoriaId(dados.getCategoriaId());
-                produtos.add(produtoM);
-                mensagem.setMensagemUsuario("Produto cadastrado!");
-                return mensagem;
-            }
-        }
-        mensagem.setMensagemUsuario("Esse Id não corresponde a nenhuma categoria!");
-        return mensagem;
+    public ProdutoService(ProdutoRepository repository) {
+        this.repository = repository;
     }
 
+    //Cadastrar um produto novo!
+    public MensagemDto cadastrarProduto(ProdutoRequisicaoDto dados){
+        MensagemDto msg = new MensagemDto();
 
+        ProdutoModel produtoNovo = new ProdutoModel();
 
+        produtoNovo.setNome(dados.getNome());
+        produtoNovo.setPreco(dados.getPreco());
+        repository.save(produtoNovo);
+        msg.setMensagemUsuario("Produto Cadastrado!");
 
-
-    public List<ProdutoRespostaDto> listarProdutos() {
-        List<ProdutoRespostaDto> lista = new ArrayList<>();
-
-        for (ProdutoModel produto : produtos) {
-            ProdutoRespostaDto produtoRespostaDto = new ProdutoRespostaDto();
-
-            produtoRespostaDto.setId(produto.getId());
-            produtoRespostaDto.setNome(produto.getNome());
-            for (CategoriaModel categoria : categorias){
-                if (produto.getCategoriaId() == categoria.getId()){
-                    produtoRespostaDto.setCategoria(categoria.getNome());
-                }
-            }
-
-            produtoRespostaDto.setPreco(produto.getPreco());
-
-            lista.add(produtoRespostaDto);
-        }
-
-        return lista;
+        return msg;
     }
 
+    // Listando produtos cadastrados
+
+    public  List<ProdutoRespostaDto> listarProdutos(){
+
+        List<ProdutoRespostaDto> lista  = new ArrayList<>();
+
+
+
+        List<ProdutoModel> listaProdutoModel = repository.findAll();
+        MensagemDto msg = new MensagemDto();
+
+
+        for (ProdutoModel verificando : listaProdutoModel){
+            ProdutoRespostaDto produtoReposta = new ProdutoRespostaDto();
+
+            produtoReposta.setCategoria(verificando.getNome());
+            produtoReposta.setNome(verificando.getNome());
+            produtoReposta.setPreco(verificando.getPreco());
+            lista.add(produtoReposta);
+
+        }
+            msg.setMensagemUsuario("Lista de produtos não encontrada!");
+            return lista;
+    }
+//Deletar o produto
+    public MensagemDto deletarProduto (Long id){
+        MensagemDto msg = new MensagemDto();
+
+        Optional<ProdutoModel> produtoOP = repository.findById(id);
+
+        if (produtoOP.isPresent()){
+            repository.delete(produtoOP.get());
+            msg.setMensagemUsuario("Produto deletado com sucesso!");
+            return msg;
+        }else {
+            msg.setMensagemUsuario("Id de produto não encontrado!");
+            return  msg;
+        }
+    }
+//Alter preco e nome do produto
+    public MensagemDto alterarProduto(long id,ProdutoRequisicaoDto dados){
+        MensagemDto msg = new MensagemDto();
+
+        Optional<ProdutoModel> produtoOP = repository.findById(id);
+        if (produtoOP.isPresent()){
+            ProdutoModel produto = produtoOP.get();
+
+            produto.setNome(dados.getNome());
+            produto.setPreco(dados.getPreco());
+            repository.save(produto);
+            msg.setMensagemUsuario("Informações do produto alterados.");
+            return msg;
+        }
+        msg.setMensagemUsuario("Usuário não encontrado.");
+        return msg;
+    }
 
 
 

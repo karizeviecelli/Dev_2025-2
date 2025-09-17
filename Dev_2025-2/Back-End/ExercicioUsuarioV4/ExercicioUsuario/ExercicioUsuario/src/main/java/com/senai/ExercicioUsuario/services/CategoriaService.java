@@ -40,10 +40,14 @@ public class CategoriaService {
 
 
     public  List<CategoriaRespostaDto> listaCategorias() {
+
+
         List<CategoriaRespostaDto> lista = new ArrayList<>();
 
       List<CategoriaModel>  listaCategoriaModel = repository.findAll();
             MensagemDto msg = new MensagemDto();
+
+
         for (CategoriaModel categoria : listaCategoriaModel) {
             CategoriaRespostaDto categoriaR = new CategoriaRespostaDto();
 
