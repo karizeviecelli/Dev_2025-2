@@ -1,9 +1,13 @@
 package com.senai.ExercicioUsuario.dtos;
 
 public class ProdutoRequisicaoDto {
+
     private String nome;
+
     private Double preco;
+
     private Long categoriaId;
+
 
     public ProdutoRequisicaoDto() {
     }
@@ -12,6 +16,14 @@ public class ProdutoRequisicaoDto {
         this.nome = nome;
         this.preco = preco;
         this.categoriaId = categoriaId;
+    }
+
+    public Long getCategoriaid() {
+        return Categoriaid;
+    }
+
+    public void setCategoriaid(Long categoriaid) {
+        Categoriaid = categoriaid;
     }
 
     public String getNome() {

@@ -3,10 +3,13 @@ package com.senai.ExercicioUsuario.services;
 import com.senai.ExercicioUsuario.dtos.MensagemDto;
 import com.senai.ExercicioUsuario.dtos.ProdutoRequisicaoDto;
 import com.senai.ExercicioUsuario.dtos.ProdutoRespostaDto;
+import com.senai.ExercicioUsuario.models.CategoriaModel;
 import com.senai.ExercicioUsuario.models.ProdutoModel;
+import com.senai.ExercicioUsuario.repositories.CategoriaRepository;
 import com.senai.ExercicioUsuario.repositories.ProdutoRepository;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,21 +21,30 @@ public class ProdutoService {
 
     public ProdutoRepository repository;
 
-    public ProdutoService(ProdutoRepository repository) {
+    private final CategoriaRepository repositoryCategoria;
+
+
+    public ProdutoService(ProdutoRepository repository, CategoriaRepository repositoryCategoria) {
         this.repository = repository;
+        this.repositoryCategoria = repositoryCategoria;
     }
 
     //Cadastrar um produto novo!
     public MensagemDto cadastrarProduto(ProdutoRequisicaoDto dados){
         MensagemDto msg = new MensagemDto();
 
-        ProdutoModel produtoNovo = new ProdutoModel();
+        Optional<CategoriaModel> categoriaOP = repositoryCategoria.findById(dados.getCategoriaId());
+        if (categoriaOP.isPresent()){
 
-        produtoNovo.setNome(dados.getNome());
-        produtoNovo.setPreco(dados.getPreco());
-        repository.save(produtoNovo);
-        msg.setMensagemUsuario("Produto Cadastrado!");
-
+            ProdutoModel produtoNovo = new ProdutoModel();
+            produtoNovo.setNome(dados.getNome());
+            produtoNovo.setPreco(dados.getPreco());
+            produtoNovo.setCategoria(categoriaOP.get());
+            repository.save(produtoNovo);
+            msg.setMensagemUsuario("Usuário cadastrado com sucesso!");
+            return msg;
+        }
+        msg.setMensagemUsuario("Usuário não encontrado!");
         return msg;
     }
 
@@ -54,6 +66,7 @@ public class ProdutoService {
             produtoReposta.setCategoria(verificando.getNome());
             produtoReposta.setNome(verificando.getNome());
             produtoReposta.setPreco(verificando.getPreco());
+
             lista.add(produtoReposta);
 
         }
@@ -79,17 +92,22 @@ public class ProdutoService {
     public MensagemDto alterarProduto(long id,ProdutoRequisicaoDto dados){
         MensagemDto msg = new MensagemDto();
 
+        Optional<CategoriaModel> categoriaOP = repositoryCategoria.findById(dados.getCategoriaId());
+
         Optional<ProdutoModel> produtoOP = repository.findById(id);
-        if (produtoOP.isPresent()){
+
+        if (produtoOP.isPresent() && categoriaOP.isPresent()){
             ProdutoModel produto = produtoOP.get();
 
             produto.setNome(dados.getNome());
             produto.setPreco(dados.getPreco());
+            produto.setCategoria(produtoOP.get().getCategoria().getId());
             repository.save(produto);
             msg.setMensagemUsuario("Informações do produto alterados.");
+            produto.setCategoria(categoriaOP.get());
             return msg;
         }
-        msg.setMensagemUsuario("Usuário não encontrado.");
+        msg.setMensagemUsuario("Produto não encontrado.");
         return msg;
     }
 

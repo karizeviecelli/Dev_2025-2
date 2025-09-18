@@ -1,6 +1,7 @@
 package com.senai.ExercicioUsuario.dtos;
 
-public class CategoriaRequisicaoDto {
+public class
+    CategoriaRequisicaoDto {
     private String nome;
 
     public CategoriaRequisicaoDto() {

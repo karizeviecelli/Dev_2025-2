@@ -17,7 +17,6 @@ import java.util.Optional;
 @Service
 public class CategoriaService {
     List<CategoriaModel> categorias = new ArrayList<>();
-    private Long categoriaId = (long) 0;
     private   CategoriaRepository repository;
 
     public CategoriaService(CategoriaRepository repository) {

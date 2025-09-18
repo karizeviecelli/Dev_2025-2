@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Categoria")
-public class CategoriaModel {
+public class    CategoriaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,7 +20,7 @@ public class CategoriaModel {
         this.nome = nome;
     }
 
-    public Long getId() {
+    public CategoriaModel getId() {
         return id;
     }
 

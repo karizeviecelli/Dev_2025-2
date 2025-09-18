@@ -9,6 +9,9 @@ public class ProdutoModel {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
+    //Passando um objeto dentro de um objeto, assim pegando o ID DA CATEGORIA
+    @ManyToOne //um para muitos
+    private CategoriaModel categoria;
 
     @Column (name = "Produto")
     private String nome;
@@ -16,17 +19,16 @@ public class ProdutoModel {
     @Column (name = "Preco")
     private Double preco;
 
-    @Column (name = "CategoriaiD")
-    private Long categoriaId;
 
     public ProdutoModel() {
     }
 
-    public ProdutoModel(Long id, String nome, Double preco, Long categoriaId) {
+
+    public ProdutoModel(Long id, String nome, Double preco) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
-        this.categoriaId = categoriaId;
+
     }
 
     public Long getId() {
@@ -53,20 +55,22 @@ public class ProdutoModel {
         this.preco = preco;
     }
 
-    public Long getCategoriaId() {
-        return categoriaId;
-    }
 
-    public void setCategoriaId(Long categoriaId) {
-        this.categoriaId = categoriaId;
-    }
+
 
     @Override
     public String toString() {
         return
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", preco=" + preco + '\'' +
-                ", categoriaId=" + categoriaId;
+                ", preco=" + preco + '\'' ;
+    }
+
+    public CategoriaModel getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaModel categoria) {
+        this.categoria = categoria;
     }
 }
