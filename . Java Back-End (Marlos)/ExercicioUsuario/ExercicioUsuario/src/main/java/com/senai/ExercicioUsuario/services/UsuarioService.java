@@ -24,23 +24,13 @@ public class UsuarioService {
     public MensagemDto adicionarUsuario(RequisicaoDto dados) {
         MensagemDto mensagem = new MensagemDto();
 
-        if (repository.existsByLogin(dados.getLogin()).isPresent()){
+        Optional<UsuarioModel> verificaUsuario = repository.findByLogin(dados.getLogin());
+
+        if (verificaUsuario.isPresent()){
             mensagem.setMensagemUsuario("Login já existente");
             return mensagem;
         }
 
-        /*
-        for (UsuarioModel usuario : usuarios) {
-            if (dados.getLogin().equals(usuario.getLogin())) {
-                //pensar numa solução para retornar erro
-
-            }
-            if (dados.getNome().isEmpty() || dados.getSenha().isEmpty() || dados.getLogin().isEmpty()) {
-                mensagem.setMensagemUsuario("Preencha todos os campos!");
-                return mensagem;
-            }
-        }
-        */
         UsuarioModel usuarioModel = new UsuarioModel();
         usuarioModel.setNome(dados.getNome());
         usuarioModel.setLogin(dados.getLogin());
@@ -94,9 +84,21 @@ public class UsuarioService {
         MensagemDto mensagem = new MensagemDto();
 
         Optional<UsuarioModel> usuarioModel = repository.findById(id);
+        Optional<UsuarioModel> verificarUsuario = repository.findByLogin(dados.getLogin());
 
-        if(usuarioModel.isPresent()){
-            //--obtêm o objeto UsuarioModel de dentro do Opcional
+        if (usuarioModel.isEmpty()){
+            mensagem.setMensagemUsuario("Usuário não existe ou não foi encontrado!");
+            return mensagem;
+        }
+        if (verificarUsuario.isPresent()){
+            if (verificarUsuario.get().getLogin().equals(usuarioModel.get().getLogin())){
+                mensagem.setMensagemUsuario("Login já existente!");
+                return mensagem;
+            }
+        }
+
+
+            //obtêm o objeto UsuarioModel de dentro do Opcional
             UsuarioModel usuario = usuarioModel.get();
             usuario.setNome(dados.getNome());
             usuario.setLogin(dados.getLogin());
@@ -105,10 +107,6 @@ public class UsuarioService {
 
             mensagem.setMensagemUsuario("Usuario atualizado!");
             return mensagem;
-        }
-
-        mensagem.setMensagemUsuario("Usuário não existe ou não foi encontrado!");
-        return mensagem;
     }
 
     //metodo para deletar usuarios
