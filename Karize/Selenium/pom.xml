@@ -6,4 +6,9 @@
   <version>1.0-SNAPSHOT</version>
   <name>Archetype - Selenium</name>
   <url>http://maven.apache.org</url>
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>4.25.0</version>
+    </dependency>
 </project>

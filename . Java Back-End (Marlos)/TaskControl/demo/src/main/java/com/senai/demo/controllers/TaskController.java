@@ -24,7 +24,7 @@ public class TaskController {
 
     @GetMapping
     public ResponseEntity<List<TaskDto>> getTasks() {
-        List<TaskDto> listTaskDto = taskService.getUsers();
+        List<TaskDto> listTaskDto = taskService.getTask();
 
         if (listTaskDto.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(listTaskDto);
@@ -41,7 +41,7 @@ public class TaskController {
             return ResponseEntity.ok(messageDto);
         }
 
-        if (messageDto.getMessage().equals("Usuário da tarefa não foi encontrado")) {
+        if (messageDto.getMessage().equals("Usuário informado não foi encontrado")) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(messageDto);
         }
 
@@ -69,7 +69,7 @@ public class TaskController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<MessageDto> deleteTask(@PathVariable("id") Long id) {
-        MessageDto messageDto = taskService.deleteTask(id);
+        MessageDto messageDto = taskService. deleteTask(id);
 
         if (messageDto.getMessage().equals("Tarefa não encontrada")){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(messageDto);

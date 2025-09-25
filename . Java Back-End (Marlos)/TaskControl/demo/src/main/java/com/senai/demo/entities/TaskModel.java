@@ -3,6 +3,7 @@ package com.senai.demo.entities;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "task")
@@ -16,7 +17,7 @@ public class TaskModel {
     @Column
     private String description;
     @Column
-    private Date schedulingDate;
+    private LocalDate schedulingDate;
     @Column
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -26,7 +27,7 @@ public class TaskModel {
     public TaskModel() {
     }
 
-    public TaskModel(Long id, String title, String description, Date schedulingDate, Status status, UserModel user) {
+    public TaskModel(Long id, String title, String description, LocalDate schedulingDate, Status status, UserModel user) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -59,11 +60,11 @@ public class TaskModel {
         this.description = description;
     }
 
-    public Date getSchedulingDate() {
+    public LocalDate getSchedulingDate() {
         return schedulingDate;
     }
 
-    public void setSchedulingDate(Date schedulingDate) {
+    public void setSchedulingDate(LocalDate schedulingDate) {
         this.schedulingDate = schedulingDate;
     }
 

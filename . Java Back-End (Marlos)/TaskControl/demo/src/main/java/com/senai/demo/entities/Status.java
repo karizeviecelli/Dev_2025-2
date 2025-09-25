@@ -3,8 +3,8 @@ package com.senai.demo.entities;
 public enum Status {
     ABERTO(1),
     PENDENTE(2),
-    CONCLUIDO(2),
-    CANCELADO(2);
+    CONCLUIDO(3),
+    CANCELADO(4);
 
     private Integer status;
 
