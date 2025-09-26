@@ -60,8 +60,11 @@ public class TaskController {
         if (messageDto.getMessage().equals("Tarefa não encontrada")){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(messageDto);
         }
-        if (messageDto.getMessage().equals("Usuário da tarefa não encontrado")){
+        if (messageDto.getMessage().equals("Tarefa da tarefa não encontrado")){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(messageDto);
+        }
+        if (messageDto.getMessage().equals("Não foi possível atualizar, usuário já tem tarefa para essa data")){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(messageDto);
         }
 
         return ResponseEntity.ok(messageDto);

@@ -92,7 +92,6 @@ public class UserService {
 
         Optional<UserModel> userOp = userRepository.findByEmail(emailUser);
 
-
         if (!userOp.isPresent()) {
             messageDto.setMessage("Usuário não existe!");
             return messageDto;

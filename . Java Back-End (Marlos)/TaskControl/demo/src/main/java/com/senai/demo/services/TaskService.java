@@ -28,7 +28,7 @@ public class TaskService {
         List<TaskDto> listTaskDto = new ArrayList<>();
         List<TaskModel> listTaskModel = taskRepository.findAll();
 
-        for (TaskModel task : listTaskModel){
+        for (TaskModel task : listTaskModel) {
             TaskDto taskDto = new TaskDto();
             taskDto.setId(task.getId());
             taskDto.setDescription(task.getDescription());
@@ -75,24 +75,35 @@ public class TaskService {
         return messageDto;
     }
 
-
     public MessageDto alterTask(@Valid TaskDto taskDto, Long id) {
         MessageDto messageDto = new MessageDto();
 
         Optional<TaskModel> taskOp = taskRepository.findById(id);
-        //Faz validação para saber se o Id passado pelo front corresponde a algum
-        if (!taskOp.isPresent()){
+        //Faz validação para saber se o Id passado pelo front corresponde a alguma task
+        if (!taskOp.isPresent()) {
             messageDto.setMessage("Tarefa não encontrada");
             return messageDto;
         }
 
-        TaskModel task = new TaskModel();
         Optional<UserModel> userOp = userRepository.findByEmail(taskDto.getEmailUser());
         //Faz validação para ver se o usuário que será o dono da tarefa existe
-        if (!userOp.isPresent()){
+        if (!userOp.isPresent()) {
             messageDto.setMessage("Usuário da tarefa não encontrado");
             return messageDto;
         }
+
+        //Verifica se já tem tarefa agendada para aquele usuário naquela data
+        List<TaskModel> taskList = taskRepository.findAllByUser(userOp.get());
+        if (!taskList.isEmpty()) {
+            for (TaskModel taskM : taskList) {
+                if (taskDto.getSchedulingDate().equals(taskM.getSchedulingDate()) && !(taskM.getId() == id)) {
+                    messageDto.setMessage("Não foi possível atualizar, usuário já tem tarefa para essa data");
+                    return messageDto;
+                }
+            }
+        }
+
+        TaskModel task = taskOp.get();
 
         task.setUser(userOp.get());
         task.setId(taskOp.get().getId());
@@ -101,7 +112,9 @@ public class TaskService {
         task.setSchedulingDate(taskDto.getSchedulingDate());
         task.setStatus(taskDto.getStatus());
 
-        messageDto.setMessage("Usuário atualizado com sucesso");
+        taskRepository.save(task);
+
+        messageDto.setMessage("Tarefa atualizado com sucesso");
         return messageDto;
     }
 
