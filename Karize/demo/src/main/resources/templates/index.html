@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title> 
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/produtos">Produtos</a>
+            <a href="/contato">Contato</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>Bem-vindo à nossa loja!</h1>
+            <p>Explore nossos produtos e ofertas especiais.</p>
+
+            <h1 th:text="${mensagem}">Mensagem de teste</h1>
+        </section>
+    </main>
+    <footer>
+        <p>&copy;2025 Nossa Loja. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
