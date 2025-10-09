@@ -24,8 +24,8 @@ public class ProdutoRespostaDto {
         this.id = id;
     }
 
-    public String getNome(String nome) {
-        return this.nome;
+    public String getNome() {
+        return nome;
     }
 
     public void setNome(String nome) {
@@ -40,7 +40,7 @@ public class ProdutoRespostaDto {
         this.preco = preco;
     }
 
-    public String getCategoria(Long categoriaId) {
+    public String getCategoria() {
         return categoria;
     }
 

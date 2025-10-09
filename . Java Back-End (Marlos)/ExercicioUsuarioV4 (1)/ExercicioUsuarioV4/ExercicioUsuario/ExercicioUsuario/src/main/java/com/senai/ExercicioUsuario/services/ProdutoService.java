@@ -53,27 +53,17 @@ public class ProdutoService {
     // Listando produtos cadastrados
 
     public  List<ProdutoRespostaDto> listarProdutos(){
-
         List<ProdutoRespostaDto> lista  = new ArrayList<>();
-
-
-
         List<ProdutoModel> listaProdutoModel = repository.findAll();
-        MensagemDto msg = new MensagemDto();
-
 
         for (ProdutoModel verificando : listaProdutoModel){
             ProdutoRespostaDto produtoReposta = new ProdutoRespostaDto();
-
             produtoReposta.setCategoria(verificando.getNome());
             produtoReposta.setNome(verificando.getNome());
             produtoReposta.setPreco(verificando.getPreco());
-
             lista.add(produtoReposta);
-
         }
-            msg.setMensagemUsuario("Lista de produtos não encontrada!");
-            return lista;
+        return lista;
     }
 //Deletar o produto
     public MensagemDto deletarProduto (Long id){

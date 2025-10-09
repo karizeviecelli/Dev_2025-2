@@ -15,7 +15,7 @@ import java.util.Optional;
 public class UsuarioService {
     private List<UsuarioModel> usuarios = new ArrayList<>();
     private Long ultimoId = 0L;
-    private  final UsuarioRepository repository;
+    private final UsuarioRepository repository;
 
     public UsuarioService(UsuarioRepository repository) {
         this.repository = repository;
@@ -41,7 +41,7 @@ public class UsuarioService {
     public List<RespostaDto> listaUsuarios() {
         List<RespostaDto> listaUsuarioDto = new ArrayList<>();
 
-       List<UsuarioModel> listadeUsuarioDto = repository.findAll();
+        List<UsuarioModel> listadeUsuarioDto = repository.findAll();
 
         for (UsuarioModel usuario : listadeUsuarioDto) {
             RespostaDto respostaDto = new RespostaDto();
@@ -63,15 +63,15 @@ public class UsuarioService {
         RespostaDto resposta = new RespostaDto();
         MensagemDto mensagem = new MensagemDto();
 
-      Optional<UsuarioModel> usuarioOP = repository.findById(id);
+        Optional<UsuarioModel> usuarioOP = repository.findById(id);
 
-      if (usuarioOP.isPresent()){
-          resposta.setId(usuarioOP.get().getId());
-          resposta.setNome(usuarioOP.get().getNome());
-          resposta.setSenha(usuarioOP.get().getSenha());
-          resposta.setLogin(usuarioOP.get().getLogin());
-          return resposta;
-      }
+        if (usuarioOP.isPresent()) {
+            resposta.setId(usuarioOP.get().getId());
+            resposta.setNome(usuarioOP.get().getNome());
+            resposta.setSenha(usuarioOP.get().getSenha());
+            resposta.setLogin(usuarioOP.get().getLogin());
+            return resposta;
+        }
 
 
         mensagem.setMensagemUsuario("Nenhum usuário foi encontrado com esse ID");
@@ -87,7 +87,7 @@ public class UsuarioService {
 
 
         Optional<UsuarioModel> usuarioOP = repository.findById(id);
-        if (usuarioOP.isPresent()){
+        if (usuarioOP.isPresent()) {
             //Obtém o objeto usuário model de dentro do usuarioOP
             UsuarioModel usuario = usuarioOP.get();
 
@@ -116,30 +116,28 @@ public class UsuarioService {
     public MensagemDto deletarUsuario(Long id) {
         MensagemDto mensagem = new MensagemDto();
 
-       Optional<UsuarioModel> usuarioOP = repository.findById(id);
+        Optional<UsuarioModel> usuarioOP = repository.findById(id);
 
-       if (usuarioOP.isPresent()){
-           //Signfiica que encontrou o usuario pelo id
-           repository.delete(usuarioOP.get());
-           mensagem.setMensagemUsuario("Usuario deletado com sucesso");
-           return mensagem;
-       }
+        if (usuarioOP.isPresent()) {
+            //Signfiica que encontrou o usuario pelo id
+            repository.delete(usuarioOP.get());
+            mensagem.setMensagemUsuario("Usuario deletado com sucesso");
+            return mensagem;
+        }
 
         mensagem.setMensagemUsuario("Usuário não existe na lista");
         return mensagem;
     }
 
-    public MensagemDto login(LoginDto dados){
-        MensagemDto mensagem = new MensagemDto();
+    public Boolean login(LoginDto dados) {
 
-        for (UsuarioModel usuario : usuarios){
-            if (dados.getLogin().equals(usuario.getLogin()) && dados.getSenha().equals(usuario.getSenha())){
-                mensagem.setMensagemUsuario("Autenticação bem-sucedida!");
-                return mensagem;
+        Optional<UsuarioModel> usuarioOP = repository.findByLogin(dados.getLogin());
+        if (usuarioOP.isPresent()){
+            if (usuarioOP.get().getSenha().equals(dados.getSenha())){
+                return true;
             }
         }
-        mensagem.setMensagemUsuario("Nenhum usuário foi encontrado!");
-        return mensagem;
+        return false;
     }
 
 }
