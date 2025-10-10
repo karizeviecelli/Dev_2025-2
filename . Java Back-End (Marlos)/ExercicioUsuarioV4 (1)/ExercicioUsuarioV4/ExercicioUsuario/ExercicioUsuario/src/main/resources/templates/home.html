@@ -25,39 +25,8 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
-    <div class="container-fluid">
-        <a class="navbar-brand py-0" href="/home">
-            <img th:src="@{/img/LogoSenai.jpg}" alt="Logo SENAI" class="d-inline-block align-text-top" style="max-height: 42px;">
-        </a>
 
-        <!-- Botão responsivo (hambúrguer) -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Links de navegação -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="/usuariolista">Usuário</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/categorialista">Categorias</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/produtolista">Produto</a>
-                </li>
-            </ul>
-
-            <!-- Botão de sair alinhado à direita -->
-            <form class="d-flex" th:action="@{/login?logout}" th:method="get">
-                <button class="btn btn-outline-light" type="submit">Sair</button>
-            </form>
-        </div>
-    </div>
-</nav>
+<div th:insert="navbar :: navigation" class="nav-wrapper"></div>
 
 
 <!-- Conteúdo -->

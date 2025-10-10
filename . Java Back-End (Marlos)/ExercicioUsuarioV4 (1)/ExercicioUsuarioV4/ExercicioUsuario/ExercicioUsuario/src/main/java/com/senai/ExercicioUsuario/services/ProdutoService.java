@@ -58,9 +58,11 @@ public class ProdutoService {
 
         for (ProdutoModel verificando : listaProdutoModel){
             ProdutoRespostaDto produtoReposta = new ProdutoRespostaDto();
-            produtoReposta.setCategoria(verificando.getNome());
+            produtoReposta.setId(verificando.getId());
             produtoReposta.setNome(verificando.getNome());
             produtoReposta.setPreco(verificando.getPreco());
+            produtoReposta.setCategoria(verificando.getCategoria().getNome());
+
             lista.add(produtoReposta);
         }
         return lista;

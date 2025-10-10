@@ -112,6 +112,36 @@ public class UsuarioService {
         return mensagem;
     }
 
+    public MensagemDto alterarUsuario(long id, RespostaDto dados) {
+        MensagemDto mensagem = new MensagemDto();
+
+
+        Optional<UsuarioModel> usuarioOP = repository.findById(id);
+        if (usuarioOP.isPresent()) {
+            //Obtém o objeto usuário model de dentro do usuarioOP
+            UsuarioModel usuario = usuarioOP.get();
+
+            usuario.setLogin(dados.getLogin());
+            usuario.setNome(dados.getNome());
+            usuario.setSenha(dados.getSenha());
+            repository.save(usuario);
+            mensagem.setMensagemUsuario("Alterado com sucesso");
+            return mensagem;
+        }
+
+        for (UsuarioModel usuario : usuarios) {
+            if (id == usuario.getId()) {
+                usuario.setLogin(dados.getLogin());
+                usuario.setNome(dados.getNome());
+                usuario.setSenha(dados.getSenha());
+
+            }
+        }
+
+        mensagem.setMensagemUsuario("Usuário não existe ou não foi encontrado!");
+        return mensagem;
+    }
+
     //metodo para deletar usuarios
     public MensagemDto deletarUsuario(Long id) {
         MensagemDto mensagem = new MensagemDto();
