@@ -21,7 +21,7 @@ public class UsuarioController {
     @PostMapping("/usuario")
     public String cadastrar(@ModelAttribute("usuarioDto") RequisicaoDto dados){
 
-        MensagemDto mensagemDto = usuarioService.adicionarUsuario(dados);
+        usuarioService.adicionarUsuario(dados);
 
         return "redirect:/usuariolista";
     }

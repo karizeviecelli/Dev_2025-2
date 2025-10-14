@@ -6,6 +6,7 @@ import com.senai.ExercicioUsuario.dtos.ProdutoRespostaDto;
 import com.senai.ExercicioUsuario.dtos.RespostaDto;
 import com.senai.ExercicioUsuario.models.CategoriaModel;
 import com.senai.ExercicioUsuario.models.ProdutoModel;
+import com.senai.ExercicioUsuario.models.UsuarioModel;
 import com.senai.ExercicioUsuario.repositories.CategoriaRepository;
 import com.senai.ExercicioUsuario.repositories.ProdutoRepository;
 import org.springframework.stereotype.Service;
@@ -108,6 +109,23 @@ public class ProdutoService {
         return msg;
     }
 
+    public Object buscarProdutoId(Long id) {
+        ProdutoRespostaDto resposta = new ProdutoRespostaDto();
+        MensagemDto mensagem = new MensagemDto();
 
+        Optional<ProdutoModel> produtoOP = repository.findById(id);
+
+        if (produtoOP.isPresent()) {
+            resposta.setId(produtoOP.get().getId());
+            resposta.setNome(produtoOP.get().getNome());
+            resposta.setPreco(produtoOP.get().getPreco());
+            resposta.setCategoria(produtoOP.get().getCategoria().getNome());
+            return resposta;
+        }
+
+
+        mensagem.setMensagemUsuario("Nenhum usuário foi encontrado com esse ID");
+        return mensagem;
+    }
 
 }

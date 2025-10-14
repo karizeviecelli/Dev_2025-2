@@ -1,51 +1,38 @@
 package com.senai.ExercicioUsuario.controllers;
 
-import com.senai.ExercicioUsuario.dtos.MensagemDto;
 import com.senai.ExercicioUsuario.dtos.ProdutoRequisicaoDto;
 import com.senai.ExercicioUsuario.dtos.ProdutoRespostaDto;
-import com.senai.ExercicioUsuario.dtos.RequisicaoDto;
 import com.senai.ExercicioUsuario.services.ProdutoService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@RestController
-@RequestMapping("/produtos")
+@Controller
 public class ProdutoController {
 
     private ProdutoService produtoService;
 
-    public ProdutoController(ProdutoService produtoService) {
+    public ProdutoController(ProdutoService produtoService){
         this.produtoService = produtoService;
     }
 
-    //Post cadastrar novo produto
-    @PostMapping("/cadastrarProduto")
-    public  ResponseEntity<MensagemDto> cadastrarProduto(@RequestBody ProdutoRequisicaoDto nome){
-        MensagemDto msg = produtoService.cadastrarProduto(nome);
-        return ResponseEntity.ok().body(msg);
+    @PostMapping("/produto")
+    public String cadastrar(@ModelAttribute("produtoDto")ProdutoRequisicaoDto dados){
+        System.out.println(dados.getNome());
+        System.out.println(dados.getPreco());
+        System.out.println(dados.getCategoriaId());
+        produtoService.cadastrarProduto(dados);
+
+        return "redirect:/produtolista";
     }
 
-    @GetMapping("/listarProduto")
-    public  ResponseEntity<List<ProdutoRespostaDto>> listarProdutos(){
-        List<ProdutoRespostaDto> listarProdutos = produtoService.listarProdutos();
-        return ResponseEntity.ok().body(listarProdutos);
+    @PostMapping("/produto/{id}")
+    public String atualizar(@ModelAttribute("produtoDto") ProdutoRequisicaoDto dados, @PathVariable Long id){
+
+        produtoService.alterarProduto(id, dados);
+
+        return "redirect:/produtolista";
+
     }
-
-    @DeleteMapping("/deletarCategoria/{id}")
-    public ResponseEntity<MensagemDto> deletarProduto (@PathVariable (value = "id") Long id){
-        MensagemDto msg = produtoService.deletarProduto(id);
-        return ResponseEntity.ok().body(msg);
-}
-
-    //atualiza usuario por id
-    @PutMapping("/produto/{id}")
-    public ResponseEntity<MensagemDto> atualizarProduto(@PathVariable(value = "id") Long id, @RequestBody ProdutoRequisicaoDto dados) {
-        MensagemDto mensagem = produtoService.alterarProduto(id, dados);
-        return ResponseEntity.ok().body(mensagem);
-    }
-
 }

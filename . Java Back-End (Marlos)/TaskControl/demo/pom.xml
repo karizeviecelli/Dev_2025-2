@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.senai</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>TaskControl</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TaskControl</name>
 	<description>Demo project for Spring Boot</description>

@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-public class ProdutosListaController {
+public class ProdutoListaController {
 
     private ProdutoService produtoService;
 
-    public ProdutosListaController(ProdutoService produtoService){
+    public ProdutoListaController(ProdutoService produtoService){
         this.produtoService = produtoService;
     }
 

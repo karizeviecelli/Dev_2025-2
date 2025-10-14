@@ -4,8 +4,6 @@ import com.senai.ExercicioUsuario.dtos.CategoriaRequisicaoDto;
 import com.senai.ExercicioUsuario.dtos.CategoriaRespostaDto;
 import com.senai.ExercicioUsuario.dtos.MensagemDto;
 import com.senai.ExercicioUsuario.services.CategoriaService;
-import com.senai.ExercicioUsuario.services.ProdutoService;
-import jakarta.persistence.Id;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +12,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/categorias")
-public class CategoriaController {
+public class APICategoriaController {
 
     private CategoriaService categoriaService;
 
-    public CategoriaController(CategoriaService categoriaService) {
+    public APICategoriaController(CategoriaService categoriaService) {
         this.categoriaService = categoriaService;
     }
 

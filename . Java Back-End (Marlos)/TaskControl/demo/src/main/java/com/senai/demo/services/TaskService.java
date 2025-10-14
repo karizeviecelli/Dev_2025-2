@@ -106,7 +106,6 @@ public class TaskService {
         TaskModel task = taskOp.get();
 
         task.setUser(userOp.get());
-        task.setId(taskOp.get().getId());
         task.setTitle(taskDto.getTitle());
         task.setDescription(taskDto.getDescription());
         task.setSchedulingDate(taskDto.getSchedulingDate());
@@ -120,6 +119,12 @@ public class TaskService {
 
     public MessageDto deleteTask(Long id) {
         MessageDto messageDto = new MessageDto();
+        if(!taskRepository.existsById(id)){
+            messageDto.setMessage("Tarefa não encontrada");
+            return messageDto;
+        }
+        taskRepository.deleteById(id);
+        messageDto.setMessage("Tarefa excluída");
         return messageDto;
     }
 }
