@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Cadastro de usuário</title>
+
+  <!-- Adicione os links para os arquivos CSS do Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+
+<div th:insert="navbar :: navigation" class="nav-wrapper"></div>
+
+<div class="container mt-3">
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Usuário</h6>
+    </div>
+
+    <div class="card-body">
+
+      <!-- inicio do formulário, deve conter apenas os inputs e botão-->
+      <form method="post" th:action="@{/usuario}"  th:object="${usuarioDto}"  >
+        <!-- Adiciona uma margem inferior de 1rem (16px) ao elemento -->
+
+        <!-- Adiciona uma margem inferior de 1rem (16px) ao elemento -->
+        <div class="mb-3">
+          <label for="usuario_nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" th:field="*{nome}" id="usuario_nome" name="usuario_nome" placeholder="Joao da Silva" required/>
+        </div>
+
+        <!-- Adiciona uma margem inferior de 1rem (16px) ao elemento -->
+        <div class="mb-3">
+          <label for="usuario_login" class="form-label">Email/Login</label>
+          <input type="email" class="form-control" th:field="*{login}" id="usuario_login" name="usuario_login" placeholder="joao@senai.com" required/>
+        </div>
+
+        <!-- Adiciona uma margem inferior de 1rem (16px) ao elemento -->
+        <div class="mb-3">
+          <label for="usuario_senha" class="form-label">Senha</label>
+          <input type="password" min="1" class="form-control" th:field="*{senha}" id="usuario_senha" name="usuario_senha" />
+        </div>
+
+        <div class="row">
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+          </div>
+          <div class="col-auto">
+            <a th:href="@{~/usuariolista}" class="btn btn-secondary">Fechar</a>
+          </div>
+        </div>
+
+        <!-- Fim do formulário -->
+      </form>
+
+    </div>
+  </div>
+</div>
+<!-- Fim conteúdo principal -->
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!-- Rodapé -->
+<footer class="text-center py-3">
+  <div class="container">
+    <span class="text-muted">© Turma 2023/2 - 2025/1 | SENAI Desenvolvimento de Sistemas</span>
+  </div>
+</footer>
+
+</body>
+</html>
