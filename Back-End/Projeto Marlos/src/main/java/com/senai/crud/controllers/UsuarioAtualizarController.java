@@ -20,7 +20,7 @@ public class UsuarioAtualizarController {
     public String viewAtualizar(@PathVariable Long id, Model model){
 
         UsuarioDto usuarioDto = service.obterUsuario(id);
-        model.addAttribute("usuarioDto", usuarioDto);
+        model.addAttribute("usuarioDto", usuarioDto); //Pega o dto, "passa" os dados para model, o model vira um container de dados e com a ajuda do thymeleaf ele imprime par ao usuario.
 
         return "usuarioatualizar";
     }

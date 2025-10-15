@@ -24,9 +24,8 @@ public class  CategoriaListaController {
         //--Carregar ListaDto com todos os usuários
         List<CategoriaDto> listaDto = categoriaService.obterCategorias();
         //--Adicionar a lista no MODEL
-        model.addAttribute("listacategoriadto", listaDto);
+        model.addAttribute("listaDto", listaDto);
         return "categorialista";
-
     }
 
 }
