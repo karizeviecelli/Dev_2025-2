@@ -80,11 +80,12 @@ public class CategoriaService {
     }
 
     public Object buscarCategoriaId(Long id) {
-        CategoriaRequisicaoDto resposta = new CategoriaRequisicaoDto();
+        CategoriaRespostaDto resposta = new CategoriaRespostaDto();
 
         Optional<CategoriaModel> categoriaOp = repository.findById(id);
 
         if (categoriaOp.isPresent()) {
+            resposta.setId(categoriaOp.get().getId());
             resposta.setNome(categoriaOp.get().getNome());
             return resposta;
         }
@@ -92,6 +93,18 @@ public class CategoriaService {
     }
 
     public void atualizarCategoria(CategoriaRequisicaoDto dados, Long id){
+        Optional<CategoriaModel> categoriaOp = repository.findById(id);
+
+        if (categoriaOp.isPresent()) {
+            CategoriaModel categoria = categoriaOp.get();
+
+            categoria.setNome(dados.getNome());
+
+            repository.save(categoria);
+        }
+    }
+
+    public void atualizarCategoria(CategoriaRespostaDto dados, Long id){
         Optional<CategoriaModel> categoriaOp = repository.findById(id);
 
         if (categoriaOp.isPresent()) {

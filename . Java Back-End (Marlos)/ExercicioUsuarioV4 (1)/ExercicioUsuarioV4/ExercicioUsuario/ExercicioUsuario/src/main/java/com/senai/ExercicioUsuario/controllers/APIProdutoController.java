@@ -36,7 +36,7 @@ public class APIProdutoController {
     public ResponseEntity<MensagemDto> deletarProduto (@PathVariable (value = "id") Long id){
         MensagemDto msg = produtoService.deletarProduto(id);
         return ResponseEntity.ok().body(msg);
-}
+    }
 
     //atualiza usuario por id
     @PutMapping("/produto/{id}")
