@@ -19,9 +19,7 @@ public class ProdutoController {
 
     @PostMapping("/produto")
     public String cadastrar(@ModelAttribute("produtoDto")ProdutoRequisicaoDto dados){
-        System.out.println(dados.getNome());
-        System.out.println(dados.getPreco());
-        System.out.println(dados.getCategoriaId());
+
         produtoService.cadastrarProduto(dados);
 
         return "redirect:/produtolista";

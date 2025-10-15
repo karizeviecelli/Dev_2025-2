@@ -25,10 +25,6 @@
             <form method="post" th:action="@{'/produto/' + ${produtoDto.id}}"  th:object="${produtoDto}"  >
                 <!-- Adiciona uma margem inferior de 1rem (16px) ao elemento -->
 
-                <div class="mb-3">
-                    <label for="produto_id" class="form-label">Id</label>
-                    <input type="text" class="form-control" th:field="*{id}" id="produto_id" name="produto_id" placeholder="Laranjinha" required/>
-                </div>
 
                 <!-- Adiciona uma margem inferior de 1rem (16px) ao elemento -->
                 <div class="mb-3">
@@ -44,8 +40,8 @@
 
                 <!-- Adiciona uma margem inferior de 1rem (16px) ao elemento -->
                 <div class="mb-3">
-                    <label for="produto_categoria" class="form-label">Categoria</label>
-                    <input type="text" min="1" class="form-control" th:field="*{categoria}" id="produto_categoria" name="produto_categoria" />
+                    <label for="produto_categoriaId" class="form-label">Id</label>
+                    <input type="text" class="form-control" th:field="*{categoriaId}" id="produto_categoriaId" name="produto_categoriaId" placeholder="1" required/>
                 </div>
 
                 <div class="row">

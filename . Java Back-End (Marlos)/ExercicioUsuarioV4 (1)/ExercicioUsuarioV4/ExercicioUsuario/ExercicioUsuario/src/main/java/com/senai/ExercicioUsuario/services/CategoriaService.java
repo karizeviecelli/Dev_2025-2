@@ -3,6 +3,7 @@ package com.senai.ExercicioUsuario.services;
 import com.senai.ExercicioUsuario.dtos.CategoriaRequisicaoDto;
 import com.senai.ExercicioUsuario.dtos.CategoriaRespostaDto;
 import com.senai.ExercicioUsuario.dtos.MensagemDto;
+import com.senai.ExercicioUsuario.dtos.RespostaDto;
 import com.senai.ExercicioUsuario.models.CategoriaModel;
 import com.senai.ExercicioUsuario.models.UsuarioModel;
 import com.senai.ExercicioUsuario.repositories.CategoriaRepository;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @Service
 public class CategoriaService {
+
     List<CategoriaModel> categorias = new ArrayList<>();
     private Long categoriaId = (long) 0;
     private   CategoriaRepository repository;
@@ -77,7 +79,28 @@ public class CategoriaService {
         return mensagem;
     }
 
+    public Object buscarCategoriaId(Long id) {
+        CategoriaRequisicaoDto resposta = new CategoriaRequisicaoDto();
 
+        Optional<CategoriaModel> categoriaOp = repository.findById(id);
 
+        if (categoriaOp.isPresent()) {
+            resposta.setNome(categoriaOp.get().getNome());
+            return resposta;
+        }
+        return resposta;
+    }
+
+    public void atualizarCategoria(CategoriaRequisicaoDto dados, Long id){
+        Optional<CategoriaModel> categoriaOp = repository.findById(id);
+
+        if (categoriaOp.isPresent()) {
+            CategoriaModel categoria = categoriaOp.get();
+
+            categoria.setNome(dados.getNome());
+
+            repository.save(categoria);
+        }
+    }
 
 }

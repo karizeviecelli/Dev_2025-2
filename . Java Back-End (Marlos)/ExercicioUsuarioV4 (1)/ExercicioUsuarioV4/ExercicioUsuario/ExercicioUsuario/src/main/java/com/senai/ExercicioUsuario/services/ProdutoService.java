@@ -84,17 +84,18 @@ public class ProdutoService {
         }
     }
 //Alter preco e nome do produto
-    public MensagemDto alterarProduto(long id,ProdutoRequisicaoDto dados){
+    public MensagemDto alterarProduto(Long id,ProdutoRequisicaoDto dados){
         MensagemDto msg = new MensagemDto();
-
+        System.out.println("Long id" + id);
         Optional<CategoriaModel> categoriaOp = repositoryCategoria.findById(dados.getCategoriaId());
-
+        System.out.println("CategoriaOp getId" + categoriaOp.get().getId());
         if (!categoriaOp.isPresent()){
             msg.setMensagemUsuario("Id da categoria não foi encontrada!");
             return msg;
         }
 
         Optional<ProdutoModel> produtoOP = repository.findById(id);
+
         if (produtoOP.isPresent()){
             ProdutoModel produto = produtoOP.get();
 
@@ -103,6 +104,12 @@ public class ProdutoService {
             produto.setCategoria(categoriaOp.get());
             repository.save(produto);
             msg.setMensagemUsuario("Informações do produto alterados.");
+
+            System.out.println("dados categoriaId: "+dados.getCategoriaId());
+            System.out.println("produto getId: "+produto.getId());
+            System.out.println("produtoOP getId: "+produtoOP.get().getId());
+            System.out.println("produtoOP getCategoria: "+produtoOP.get().getCategoria());
+
             return msg;
         }
         msg.setMensagemUsuario("Usuário não encontrado.");
@@ -110,7 +117,7 @@ public class ProdutoService {
     }
 
     public Object buscarProdutoId(Long id) {
-        ProdutoRespostaDto resposta = new ProdutoRespostaDto();
+        ProdutoRequisicaoDto resposta = new ProdutoRequisicaoDto();
         MensagemDto mensagem = new MensagemDto();
 
         Optional<ProdutoModel> produtoOP = repository.findById(id);
@@ -119,7 +126,7 @@ public class ProdutoService {
             resposta.setId(produtoOP.get().getId());
             resposta.setNome(produtoOP.get().getNome());
             resposta.setPreco(produtoOP.get().getPreco());
-            resposta.setCategoria(produtoOP.get().getCategoria().getNome());
+            resposta.setCategoriaId(produtoOP.get().getId());
             return resposta;
         }
 
