@@ -116,9 +116,9 @@ public class ProdutoService {
         return msg;
     }
 
-    public Object buscarProdutoId(Long id) {
+    public ProdutoRequisicaoDto buscarProdutoId(Long id) {
         ProdutoRequisicaoDto resposta = new ProdutoRequisicaoDto();
-        MensagemDto mensagem = new MensagemDto();
+
 
         Optional<ProdutoModel> produtoOP = repository.findById(id);
 
@@ -126,13 +126,10 @@ public class ProdutoService {
             resposta.setId(produtoOP.get().getId());
             resposta.setNome(produtoOP.get().getNome());
             resposta.setPreco(produtoOP.get().getPreco());
-            resposta.setCategoriaId(produtoOP.get().getId());
+            resposta.setCategoriaId(produtoOP.get().getCategoria().getId());
             return resposta;
         }
-
-
-        mensagem.setMensagemUsuario("Nenhum usuário foi encontrado com esse ID");
-        return mensagem;
+        return resposta;
     }
 
 }

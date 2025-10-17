@@ -40,7 +40,12 @@
                 <!-- Adiciona uma margem inferior de 1rem (16px) ao elemento -->
                 <div class="mb-3">
                     <label for="produto_categoriaId" class="form-label">Categoria</label>
-                    <input type="text" min="1" class="form-control" th:field="*{categoriaId}" id="produto_categoriaId" name="produto_categoriaId" />
+                    <select id="produto_categoriaId" name="produto_categoriaId" class="form-control" th:field="*{categoriaId}">
+                        <option value="">Selecione uma categoria</option>
+                        <option th:each="categoria : ${categoriaDto}" th:value="${categoria.id}" th:text="${categoria.nome}">
+                        </option>
+                    </select>
+
                 </div>
 
                 <div class="row">

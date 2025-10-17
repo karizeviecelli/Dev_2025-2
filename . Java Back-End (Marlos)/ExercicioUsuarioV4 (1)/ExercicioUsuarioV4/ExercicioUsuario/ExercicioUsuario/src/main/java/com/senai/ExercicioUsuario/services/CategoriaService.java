@@ -1,9 +1,6 @@
 package com.senai.ExercicioUsuario.services;
 
-import com.senai.ExercicioUsuario.dtos.CategoriaRequisicaoDto;
-import com.senai.ExercicioUsuario.dtos.CategoriaRespostaDto;
-import com.senai.ExercicioUsuario.dtos.MensagemDto;
-import com.senai.ExercicioUsuario.dtos.RespostaDto;
+import com.senai.ExercicioUsuario.dtos.*;
 import com.senai.ExercicioUsuario.models.CategoriaModel;
 import com.senai.ExercicioUsuario.models.UsuarioModel;
 import com.senai.ExercicioUsuario.repositories.CategoriaRepository;
@@ -85,6 +82,22 @@ public class CategoriaService {
         Optional<CategoriaModel> categoriaOp = repository.findById(id);
 
         if (categoriaOp.isPresent()) {
+            resposta.setId(categoriaOp.get().getId());
+            resposta.setNome(categoriaOp.get().getNome());
+            return resposta;
+        }
+        return resposta;
+    }
+
+    public CategoriaRespostaDto buscarCategoriaId(ProdutoRequisicaoDto id) {
+        CategoriaRespostaDto resposta = new CategoriaRespostaDto();
+
+        System.out.println(id.getCategoriaId());
+        Optional<CategoriaModel> categoriaOp = repository.findById(id.getCategoriaId());
+
+
+        if (categoriaOp.isPresent()) {
+
             resposta.setId(categoriaOp.get().getId());
             resposta.setNome(categoriaOp.get().getNome());
             return resposta;
