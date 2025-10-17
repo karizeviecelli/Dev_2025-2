@@ -54,11 +54,12 @@
                     <!--Colunas com os dados-->
                     <!-- Estrutura de repetição do thymeleaf th:each pegando a lista de objetos do listaDto e colocando os dados na tabela-->
                     <tr th:each="dados : ${produtolista}">
-                        <td th:text="${dados.id}"></td>git
+                        <td th:text="${dados.id}"></td>
                         <td th:text="${dados.nome}"></td>
                         <td th:text="${dados.preco}"></td>
-                        <td><a th:href="@{'/usuarioatualizar/' + ${dados.id}}" class="btn btn-warning">Alterar</a></td>
-                        <td><button th:data-usuario-id="${dados.id}" class="excluir btn btn-danger">Excluir</<button></td>
+                        <td th:text="${dados.categoriaId}"></td>
+                        <td><a th:href="@{'/produtoatualizar/' + ${dados.id}}" class="btn btn-warning">Alterar</a></td>
+                        <td><button th:data-produto-id="${dados.id}" class="excluir btn btn-danger">Excluir</<button></td>
                     </tr>
                     </tbody>
                 </table>

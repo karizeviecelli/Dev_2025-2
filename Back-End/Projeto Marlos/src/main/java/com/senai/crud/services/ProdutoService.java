@@ -100,21 +100,33 @@ public class ProdutoService {
     }
 
     //--obter uma unica produto
-    public ProdutoDto obterProduto(Long id){
+    public ProdutoDto obterProduto(Long id) {
 
         ProdutoDto produtoDto = new ProdutoDto();
 
         Optional<ProdutoModel> produtoOP = repository.findById(id);
 
-        if (produtoOP.isPresent()){
-            produtoDto.setId(produtoOP.get().getId());
-            produtoDto.setNome(produtoOP.get().getNome());
-            produtoDto.setPreco(produtoOP.get().getPreco());
-            produtoDto.setCategoriaId(produtoOP.get().getCategoria().getId());
+        if (produtoOP.isPresent()) {
+            ProdutoModel produto = produtoOP.get();
+
+            produtoDto.setId(produto.getId());
+            produtoDto.setNome(produto.getNome());
+            produtoDto.setPreco(produto.getPreco());
+
+            if (produto.getCategoria() != null) {
+                produtoDto.setCategoriaId(produto.getCategoria().getId());
+            } else {
+                System.out.println(" Produto sem categoria associada!");
+                produtoDto.setCategoriaId(null);
+            }
+
             return produtoDto;
         }
+
         return produtoDto;
     }
+
+
 
     //--obter todos os usuários
     public List<ProdutoDto> obterProdutos(){
@@ -125,16 +137,18 @@ public class ProdutoService {
         List<ProdutoModel> listaProdutoModel = repository.findAll();
 
         //--percorrer a lista de usuarioModel
-        for (ProdutoModel produto : listaProdutoModel){
-            //--Criar um objeto usuarioDTO novo
+        for (ProdutoModel produto : listaProdutoModel) {
             ProdutoDto produtoDto = new ProdutoDto();
-            //--Converter os dados do usuarioModel para usuarioDto
-            produtoDto.setId(produto.getId());
             produtoDto.setId(produto.getId());
             produtoDto.setNome(produto.getNome());
             produtoDto.setPreco(produto.getPreco());
-            produtoDto.setCategoriaId(produto.getCategoria().getId());
-            //--adicionar o usuarioDTO na lista de usuarioDTO
+
+            if (produto.getCategoria() != null) {
+                produtoDto.setCategoriaId(produto.getCategoria().getId());
+            } else {
+                produtoDto.setCategoriaId(null); // ou algum valor padrão
+            }
+
             listaProdutoDto.add(produtoDto);
         }
         //--retornar a lista de usuarioDTO

@@ -25,7 +25,6 @@ public class UsuarioListaController {
         //--Adicionar a lista no MODEL
         model.addAttribute("listaDto", listaDto);
         return "usuariolista";
-
     }
 
 }
