@@ -86,9 +86,9 @@ public class ProdutoService {
 //Alter preco e nome do produto
     public MensagemDto alterarProduto(Long id,ProdutoRequisicaoDto dados){
         MensagemDto msg = new MensagemDto();
-        System.out.println("Long id" + id);
+
         Optional<CategoriaModel> categoriaOp = repositoryCategoria.findById(dados.getCategoriaId());
-        System.out.println("CategoriaOp getId" + categoriaOp.get().getId());
+
         if (!categoriaOp.isPresent()){
             msg.setMensagemUsuario("Id da categoria não foi encontrada!");
             return msg;
@@ -104,11 +104,6 @@ public class ProdutoService {
             produto.setCategoria(categoriaOp.get());
             repository.save(produto);
             msg.setMensagemUsuario("Informações do produto alterados.");
-
-            System.out.println("dados categoriaId: "+dados.getCategoriaId());
-            System.out.println("produto getId: "+produto.getId());
-            System.out.println("produtoOP getId: "+produtoOP.get().getId());
-            System.out.println("produtoOP getCategoria: "+produtoOP.get().getCategoria());
 
             return msg;
         }

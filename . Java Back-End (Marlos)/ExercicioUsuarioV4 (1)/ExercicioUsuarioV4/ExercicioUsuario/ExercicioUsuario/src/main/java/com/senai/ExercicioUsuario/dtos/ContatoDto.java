@@ -1,41 +1,35 @@
-package com.senai.ExercicioUsuario.models;
-
-import jakarta.persistence.*;
+package com.senai.ExercicioUsuario.dtos;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "Contato")
-public class ContatoModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private java.lang.Long id;
+public class ContatoDto {
 
-    @Column
+    private Long id;
+
     private String nome;
 
-    @Column
     private Integer telefone;
 
-    @Column
     private LocalDate dataNasc;
 
-    @Column
     private String email;
 
-    @ManyToOne
-    private CidadeModel cidade;
+    private Long cidadeId;
 
-    public ContatoModel() {
+    private String cidadeNome;
+
+    public ContatoDto() {
     }
 
-    public ContatoModel(Long id, String nome, Integer telefone, LocalDate dataNasc, String email, CidadeModel cidade) {
+
+    public ContatoDto(Long id, String nome, Integer telefone, LocalDate dataNasc, String email, Long cidadeId, String cidadeNome) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.dataNasc = dataNasc;
         this.email = email;
-        this.cidade = cidade;
+        this.cidadeId = cidadeId;
+        this.cidadeNome = cidadeNome;
     }
 
     public Long getId() {
@@ -78,11 +72,19 @@ public class ContatoModel {
         this.email = email;
     }
 
-    public CidadeModel getCidade() {
-        return cidade;
+    public Long getCidadeId() {
+        return cidadeId;
     }
 
-    public void setCidade(CidadeModel cidade) {
-        this.cidade = cidade;
+    public void setCidadeId(Long cidadeId) {
+        this.cidadeId = cidadeId;
+    }
+
+    public String getCidadeNome() {
+        return cidadeNome;
+    }
+
+    public void setCidadeNome(String cidadeNome) {
+        this.cidadeNome = cidadeNome;
     }
 }
