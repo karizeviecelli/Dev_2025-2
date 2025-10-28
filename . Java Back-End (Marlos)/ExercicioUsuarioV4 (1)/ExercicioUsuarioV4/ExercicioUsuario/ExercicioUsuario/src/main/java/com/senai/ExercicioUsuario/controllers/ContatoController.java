@@ -28,7 +28,7 @@ public class ContatoController {
     }
 
     @PostMapping("/contato/{id}")
-    public String atualziar(@ModelAttribute("contatoDto")ContatoDto dados, @PathVariable Long id){
+    public String atualizar(@ModelAttribute("contatoDto")ContatoDto dados, @PathVariable Long id){
 
         contatoService.atualizaContato(id,dados);
 
@@ -36,8 +36,8 @@ public class ContatoController {
 
     }
 
-    @DeleteMapping("/produto/{id}")
-    public ResponseEntity<Boolean> deleter(@PathVariable Long id){
+    @DeleteMapping("/contato/{id}")
+    public ResponseEntity<Boolean> deletar(@PathVariable Long id){
         Boolean a = contatoService.excluirContato(id);
         return ResponseEntity.ok().body(a);
     }

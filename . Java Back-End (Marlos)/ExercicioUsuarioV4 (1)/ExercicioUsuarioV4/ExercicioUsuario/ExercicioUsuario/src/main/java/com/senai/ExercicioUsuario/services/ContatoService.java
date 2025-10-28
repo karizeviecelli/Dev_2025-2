@@ -106,4 +106,25 @@ public class ContatoService {
         return false;
     }
 
+    public ContatoDto buscarContatoId(Long id){
+
+        Optional<ContatoModel> contatoOp = contatoRepository.findById(id);
+
+        if (contatoOp.isPresent()){
+            ContatoDto contatoDto = new ContatoDto();
+
+            contatoDto.setNome(contatoOp.get().getNome());
+            contatoDto.setEmail(contatoOp.get().getEmail());
+            contatoDto.setId(contatoOp.get().getId());
+            contatoDto.setTelefone(contatoOp.get().getTelefone());
+            contatoDto.setDataNasc(contatoOp.get().getDataNasc());
+            contatoDto.setCidadeNome(contatoOp.get().getCidade().getNome());
+            contatoDto.setCidadeId(contatoDto.getCidadeId());
+
+            return contatoDto;
+        }
+
+        return null;
+    }
+
 }

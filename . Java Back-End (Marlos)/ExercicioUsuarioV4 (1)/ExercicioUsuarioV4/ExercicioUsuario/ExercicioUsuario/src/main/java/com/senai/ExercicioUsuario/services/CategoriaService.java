@@ -92,7 +92,6 @@ public class CategoriaService {
     public CategoriaRespostaDto buscarCategoriaId(ProdutoRequisicaoDto id) {
         CategoriaRespostaDto resposta = new CategoriaRespostaDto();
 
-        System.out.println(id.getCategoriaId());
         Optional<CategoriaModel> categoriaOp = repository.findById(id.getCategoriaId());
 
 

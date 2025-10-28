@@ -26,14 +26,10 @@ public class ProdutoAtualizarController {
     public String viewAtualizar(@PathVariable Long id, Model model){
 
         ProdutoRequisicaoDto respostaDto = produtoService.buscarProdutoId(id);
-        System.out.println("RespostaDto ="+respostaDto.getNome());
-        System.out.println("RespostaDto ="+respostaDto.getCategoriaId());
+
         List<CategoriaRespostaDto> categoriaDto = categoriaService.listaCategorias();
 
         CategoriaRespostaDto campoDto = categoriaService.buscarCategoriaId(respostaDto);
-
-        System.out.println(campoDto.getNome());
-        System.out.println(campoDto.getId());
 
         model.addAttribute("campoDto", campoDto);
         model.addAttribute("produtoDto", respostaDto);
