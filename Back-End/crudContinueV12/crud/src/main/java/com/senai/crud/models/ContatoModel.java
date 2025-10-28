@@ -1,6 +1,8 @@
 package com.senai.crud.models;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -15,10 +17,10 @@ public class ContatoModel {
     private String nome;
 
     @Column(name = "telefone")
-    private  double telefone;
+    private  String telefone;
 
     @Column(name = "data")
-    private Date data;
+    private LocalDate data;
 
     @Column(name = "email")
     private String email;
@@ -29,7 +31,7 @@ public class ContatoModel {
     public ContatoModel() {
     }
 
-    public ContatoModel(String email, long id, String nome, double telefone, Date data, String cidade) {
+    public ContatoModel(String email, long id, String nome, String telefone, LocalDate data, String cidade) {
         this.email = email;
         this.id = id;
         this.nome = nome;
@@ -66,19 +68,19 @@ public class ContatoModel {
         this.nome = nome;
     }
 
-    public double getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(double telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 

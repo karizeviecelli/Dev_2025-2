@@ -28,7 +28,7 @@
 
             <!--Botão para acessar a tela de cadastro-->
             <p class="card-text">
-                <a th:href="@{~/contatocadastro}" class="btn btn-primary">Cadastrar contato</a>
+                <a th:href="@{/contato/contatocadastro}" class="btn btn-primary">Cadastrar contato</a>
             </p>
 
             <!--Div e Tabela com a listagem de itens-->
@@ -41,7 +41,12 @@
                     <tr>
                         <!--Colunas da Tabela aqui deve ser preenchido conforme as colunas a serem exibidas-->
                         <th>id</th>
-                        <th>Descrição</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Cidade</th>
+                        <th>Data</th>
+
 
                         <th style="white-space: nowrap;">Atualizar</th>
                         <th style="white-space: nowrap;">Excluir</th>
@@ -52,11 +57,15 @@
                     <tbody>
                     <!--Colunas com os dados-->
                     <!-- Estrutura de repetição do thymeleaf th:each pegando a lista de objetos do listaDto e colocando os dados na tabela-->
-                    <tr th:each="dados : ${listaDto}">
+                    <tr th:each="dados : ${contatoDtoList}">
                         <td th:text="${dados.id}"></td>
-                        <td th:text="${dados.descricao}"></td>
-                        <td><a th:href="@{'/categorialista/' + ${dados.id}}" class="btn btn-warning">Alterar</a></td>
-                        <td><button th:data-usuario-id="${dados.id}" class="excluir btn btn-danger">Excluir</button></td>
+                        <td th:text="${dados.nome}"></td>
+                        <td th:text="${dados.email}"></td>
+                        <td th:text="${dados.telefone}"></td>
+                        <td th:text="${dados.cidade}"></td>
+                        <td th:text="${#temporals.format(dados.data,'dd/MM/yyyy')}"></td>
+                        <td><a th:href="@{'/contatolista/' + ${dados.id}}" class="btn btn-warning">Alterar</a></td>
+                        <td><button th:data-contato-id="${dados.id}" class="excluir btn btn-danger">Excluir</button></td>
                     </tr>
                     </tbody>
                 </table>

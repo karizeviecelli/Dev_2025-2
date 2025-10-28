@@ -1,7 +1,7 @@
 package com.senai.crud.dtos;
 
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class ContatoDto {
 
@@ -11,10 +11,10 @@ public class ContatoDto {
     private String nome;
 
 
-    private  double telefone;
+    private  String telefone;
 
 
-    private Date data;
+    private LocalDate data;
 
 
     private String email;
@@ -26,7 +26,7 @@ public class ContatoDto {
     public ContatoDto() {
     }
 
-    public ContatoDto(long id, String nome, double telefone, Date data, String email, String cidade) {
+    public ContatoDto(long id, String nome,String telefone, LocalDate  data, String email, String cidade) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
@@ -51,19 +51,19 @@ public class ContatoDto {
         this.nome = nome;
     }
 
-    public double getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(double telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 

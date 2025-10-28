@@ -22,18 +22,45 @@
         <div class="card-body">
 
             <!-- inicio do formulário, deve conter apenas os inputs e botão-->
-            <form method="post" th:action="@{/categoria}"  th:object="${categoriaDto}"  >
+            <form method="post" th:action="@{/contato/cadastrocontato}"  th:object="${contatoDto}"  >
                 <!-- Adiciona uma margem inferior de 1rem (16px) ao elemento -->
 
                 <!-- Adiciona uma margem inferior de 1rem (16px) ao elemento -->
+
                 <div class="mb-3">
-                    <label for="categoria_descricao" class="form-label">Descrição</label>
-                    <input type="text" class="form-control" th:field="*{descricao}" id="categoria_descricao" name="categoria_descricao" placeholder="Joao da Silva" required/>
+                    <label for="contato_nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" th:field="*{nome}" id="contato_nome" name="contato_nome" placeholder="João" required/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="contato_telefone" class="form-label">Telefone</label>
+                    <input type="text" class="form-control" th:field="*{telefone}" id="contato_telefone" name="contato_telefone" placeholder="+55 47 0000-0000" required/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="contato_data" class="form-label">Data</label>
+                    <input type="date" class="form-control" th:field="*{data}" id="contato_data" name="contato_data" placeholder="2006-12-02" required/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="contato_email" class="form-label">Email</label>
+                    <input type="text" class="form-control" th:field="*{email}" id="contato_email" name="contato_email" placeholder="admin@admin.com" required/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="contato_cidade" class="form-label" >Cidade</label>
+                    <select class="form-control" th:field="*{cidade}" id="contato_cidade" required>
+                        <option value="">Selecione uma cidade</option>
+                        <option value="Blumenau">Blumenau</option>
+                        <option value="Indaial">Indaial</option>
+                        <option value="Brusque">Brusque</option>
+                        <option value="Itajaí">Itajaí</option>
+                    </select>
                 </div>
 
                 <div class="row">
                     <div class="col-auto">
-                        <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+                        <button type="submit" class="btn btn-primary w-100">Cadastrar Contato</button>
                     </div>
                     <div class="col-auto">
                         <a th:href="@{~/contatolista}" class="btn btn-secondary">Fechar</a>
