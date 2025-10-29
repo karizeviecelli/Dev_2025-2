@@ -38,12 +38,10 @@ public class CidadeService {
     }
 
     public CidadeDto buscaCidadeId(ContatoDto dados){
-
+        CidadeDto cidadeDto = new CidadeDto();
         Optional<CidadeModel> cidadeOp = cidadeRepository.findById(dados.getCidadeId());
 
         if (cidadeOp.isPresent()){
-            CidadeDto cidadeDto = new CidadeDto();
-
             cidadeDto.setId(cidadeOp.get().getId());
             cidadeDto.setNome(cidadeOp.get().getNome());
             cidadeDto.setEstadoNome(cidadeOp.get().getEstado().getNome());
@@ -51,7 +49,7 @@ public class CidadeService {
 
             return cidadeDto;
         }
-        return null;
+        return cidadeDto;
     }
 
 }

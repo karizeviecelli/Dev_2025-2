@@ -7,33 +7,26 @@ import com.senai.ExercicioUsuario.services.ContatoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 @Controller
-public class ContatoAtualizarController {
-
-    private ContatoService contatoService;
+public class ContatoCadastroController {
     private CidadeService cidadeService;
 
-    public ContatoAtualizarController(ContatoService contatoService, CidadeService cidadeService) {
-        this.contatoService = contatoService;
+    public ContatoCadastroController(CidadeService cidadeService) {
         this.cidadeService = cidadeService;
     }
 
-    @GetMapping("/contatoatualizar/{id}")
-    public String viewAtualizar(Model model, @PathVariable Long id) {
-
-        ContatoDto contatoDto = contatoService.buscarContatoId(id);
-        System.out.println("CONTATO DTO :" + contatoDto.getCidadeId());
+    @GetMapping("/contatocadastro")
+    public String viewCadastro(Model model){
 
         List<CidadeDto> cidadeDto = cidadeService.listaCidades();
 
-        model.addAttribute("contatoDto", contatoDto);
         model.addAttribute("cidadeDto", cidadeDto);
+        model.addAttribute("contatoDto", new ContatoDto());
 
-        return "contatoatualizar";
+        return "contatocadastro";
     }
 
 

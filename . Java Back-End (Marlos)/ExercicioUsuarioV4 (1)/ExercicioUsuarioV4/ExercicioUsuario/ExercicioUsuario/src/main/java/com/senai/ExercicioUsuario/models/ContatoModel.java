@@ -15,7 +15,7 @@ public class ContatoModel {
     private String nome;
 
     @Column
-    private Integer telefone;
+    private String telefone;
 
     @Column
     private LocalDate dataNasc;
@@ -29,7 +29,7 @@ public class ContatoModel {
     public ContatoModel() {
     }
 
-    public ContatoModel(Long id, String nome, Integer telefone, LocalDate dataNasc, String email, CidadeModel cidade) {
+    public ContatoModel(Long id, String nome, String telefone, LocalDate dataNasc, String email, CidadeModel cidade) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
@@ -54,11 +54,11 @@ public class ContatoModel {
         this.nome = nome;
     }
 
-    public Integer getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 

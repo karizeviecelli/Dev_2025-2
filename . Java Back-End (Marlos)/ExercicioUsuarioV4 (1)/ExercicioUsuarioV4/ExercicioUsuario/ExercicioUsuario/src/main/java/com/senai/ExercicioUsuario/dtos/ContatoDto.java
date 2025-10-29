@@ -1,5 +1,7 @@
 package com.senai.ExercicioUsuario.dtos;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
 public class ContatoDto {
@@ -8,8 +10,9 @@ public class ContatoDto {
 
     private String nome;
 
-    private Integer telefone;
+    private String telefone;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataNasc;
 
     private String email;
@@ -22,7 +25,7 @@ public class ContatoDto {
     }
 
 
-    public ContatoDto(Long id, String nome, Integer telefone, LocalDate dataNasc, String email, Long cidadeId, String cidadeNome) {
+    public ContatoDto(Long id, String nome, String telefone, LocalDate dataNasc, String email, Long cidadeId, String cidadeNome) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
@@ -48,11 +51,11 @@ public class ContatoDto {
         this.nome = nome;
     }
 
-    public Integer getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
@@ -86,5 +89,20 @@ public class ContatoDto {
 
     public void setCidadeNome(String cidadeNome) {
         this.cidadeNome = cidadeNome;
+
+
+    }
+
+    @Override
+    public String toString() {
+        return "ContatoDto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", telefone=" + telefone +
+                ", dataNasc=" + dataNasc +
+                ", email='" + email + '\'' +
+                ", cidadeId=" + cidadeId +
+                ", cidadeNome='" + cidadeNome + '\'' +
+                '}';
     }
 }
