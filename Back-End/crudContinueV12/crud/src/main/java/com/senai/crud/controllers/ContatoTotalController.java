@@ -6,37 +6,17 @@ import com.senai.crud.services.ContatoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
-@RequestMapping("/contato")
+@RequestMapping("/contato") // separando do fluxo de páginas
 public class ContatoTotalController {
-
     private final ContatoService contatoService;
 
-    public ContatoTotalController(ContatoService contatoService) {this.contatoService = contatoService;}
-
-    @GetMapping("/contatocadastro")
-    public String contatoCadastro(Model model){
-        model.addAttribute("contatoDto", new ContatoDto());
-        return "contatocadastro"; // retorna o template correto
+    public ContatoTotalController(ContatoService contatoService) {
+        this.contatoService = contatoService;
     }
 
-    @PostMapping("/cadastrocontato")
-    public String cadastrarContato(@ModelAttribute ContatoDto contatoDto){
-        contatoService.cadastrarContato(contatoDto);
-        return "redirect:/contatolista"; // redireciona para a lista
-    }
-
-    @GetMapping("/contatolista")
-    public String viewContatoLista(Model model){
-        List<ContatoDto> contatoDtoList = contatoService.obterContato();
-        model.addAttribute("contatoDtoList", contatoDtoList);
-        return "contatolista"; // retorna o template da lista
-    }
     @DeleteMapping("/{id}")
     public ResponseEntity<RespostaDto> excluir(@PathVariable Long id){
         RespostaDto resposta = contatoService.excluirContato(id);
@@ -48,4 +28,14 @@ public class ContatoTotalController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resposta);
         }
     }
+
+    @PostMapping("/{id}")
+    public String atualizar(@RequestBody ContatoDto contatoDto, @PathVariable Long id){
+        
+         contatoService.atualizarContato(id, contatoDto);
+
+        return "redirect:/contatolista";
+    }
+
+
 }

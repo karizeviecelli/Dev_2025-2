@@ -1,9 +1,6 @@
 package com.senai.crud.services;
 
-import com.senai.crud.dtos.CategoriaDto;
-import com.senai.crud.dtos.ContatoDto;
-import com.senai.crud.dtos.ProdutoDto;
-import com.senai.crud.dtos.RespostaDto;
+import com.senai.crud.dtos.*;
 import com.senai.crud.models.CategoriaModel;
 import com.senai.crud.models.ContatoModel;
 import com.senai.crud.models.ProdutoModel;
@@ -91,4 +88,48 @@ public class ContatoService {
         return resposta ;
 
     }
+
+    //--atualizar usuário
+    public RespostaDto atualizarContato(Long id, ContatoDto contatoDto){
+
+        Optional<ContatoModel> contatoOP = contatoRepository.findById(id);
+
+        if (contatoOP.isPresent()){
+            //--obter o objeto UsuarioModel de dentro do Opcional
+            ContatoModel contato = contatoOP.get();
+
+            contato.setNome(contatoDto.getNome());
+            contato.setEmail(contatoDto.getEmail());
+            contato.setCidade(contatoDto.getCidade());
+            contato.setData(contatoDto.getData());
+            contato.setTelefone(contatoDto.getTelefone());
+            contatoRepository.save(contato);
+            RespostaDto resposta = new  RespostaDto();
+            resposta.setMensagem("sucesso");
+            return resposta ;
+        }
+
+        RespostaDto resposta = new  RespostaDto();
+        resposta.setMensagem("Não foi possível atualizar o usuário id = " + id);
+        return resposta ;
+
+    }
+    public ContatoDto obterContato(Long id){
+
+        ContatoDto contatoDto = new ContatoDto();
+        Optional<ContatoModel> contatoOP = contatoRepository.findById(id);
+
+        if (contatoOP.isPresent()){
+            contatoDto.setNome(contatoDto.getNome());
+            contatoDto.setEmail(contatoDto.getEmail());
+            contatoDto.setData(contatoDto.getData());
+            contatoDto.setCidade(contatoDto.getCidade());
+            contatoDto.setTelefone(contatoDto.getTelefone());
+            return contatoDto;
+        }
+        return contatoDto;
+    }
+
+
+
 }
