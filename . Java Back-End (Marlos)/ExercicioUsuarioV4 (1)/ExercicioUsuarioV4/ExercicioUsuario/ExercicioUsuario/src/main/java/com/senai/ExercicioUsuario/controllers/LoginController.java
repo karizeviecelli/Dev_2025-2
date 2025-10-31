@@ -1,14 +1,10 @@
 package com.senai.ExercicioUsuario.controllers;
-/*
-import com.senai.ExercicioUsuario.dtos.LoginDto;
-import com.senai.ExercicioUsuario.dtos.MensagemDto;
-import com.senai.ExercicioUsuario.services.UsuarioService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-*/
 
 import com.senai.ExercicioUsuario.dtos.LoginDto;
+import com.senai.ExercicioUsuario.dtos.UsuarioSessaoDto;
 import com.senai.ExercicioUsuario.services.UsuarioService;
+import com.senai.ExercicioUsuario.sessao.ControleSessao;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -47,17 +43,25 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute("loginDto") LoginDto loginDto){
-        if (usuarioService.login(loginDto)){
-            //sucesso no login
+    public String login(@ModelAttribute("loginDto") LoginDto loginDto, HttpServletRequest request){
+
+        UsuarioSessaoDto usuarioSessao = usuarioService.login(loginDto);
+
+        if (usuarioSessao.getId() != null){
+
+            ControleSessao.registrar(request, usuarioSessao);
+
             return "redirect:/home";
         } else {
-            //erro no login
             return "redirect:/login?erro";
         }
     }
 
-
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request){
+        ControleSessao.encerrar(request);
+        return "redirect:/login";
+    }
 
 
 }

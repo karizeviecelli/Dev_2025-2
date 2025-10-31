@@ -1,6 +1,7 @@
 package com.senai.ExercicioUsuario.services;
 
 import com.senai.ExercicioUsuario.dtos.*;
+
 import com.senai.ExercicioUsuario.models.UsuarioModel;
 import com.senai.ExercicioUsuario.repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
@@ -159,15 +160,19 @@ public class UsuarioService {
         return mensagem;
     }
 
-    public Boolean login(LoginDto dados) {
+    public UsuarioSessaoDto login(LoginDto dados) {
+
+        UsuarioSessaoDto usuarioSessao = new UsuarioSessaoDto();
 
         Optional<UsuarioModel> usuarioOP = repository.findByLogin(dados.getLogin());
+
         if (usuarioOP.isPresent()){
             if (usuarioOP.get().getSenha().equals(dados.getSenha())){
-                return true;
+                usuarioSessao.setId(usuarioOP.get().getId());
+                usuarioSessao.setNome(usuarioOP.get().getNome());
             }
         }
-        return false;
+        return usuarioSessao;
     }
 
 }
