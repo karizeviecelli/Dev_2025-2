@@ -1,0 +1,28 @@
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    background-color: silver;
+    border: 2px solid black;
+    padding: 20px;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+

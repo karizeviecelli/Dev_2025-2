@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicios JavaScript</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+           
+        </nav>
+    </header>
+    <main>
+        <section>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nomeUsuario">
+            <button type="submit" onclick="cadastroUsuario()">Cadastrar Usuario</button>
+            <p id="nome"></p>
+
+            <br><br>
+            
+            <button type="submit" onclick="resultadoTela()">somar</button>
+            <p id="calcula">resultado:</p>
+            <br><br>
+        </section>
+            <h2>Calculadora</h2>
+            <label for="num1">numero 1</label>
+            <input type="number" id="num1" required placeholder="Digite o numero 1:">
+            <br>
+            <label for="num1">numero 2</label>
+            <input type="number" id="num2" required placeholder="Digite o numero 2:">
+            <br>
+            <label for="calculo">Selecione o calculo:</label>
+            <select name="Calculo" id="operacao" >Calculo
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="/">/</option>
+                    <option value="*">*</option>
+                    </select>
+                    <br><br>
+                    <button onclick="calcular()">Calcular</button>
+                    <p id="resultado"></p>
+        <section>
+
+        </section>
+    </main>
+    <footer>
+
+        
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

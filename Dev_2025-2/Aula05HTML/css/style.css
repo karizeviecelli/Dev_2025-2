@@ -1,0 +1,10 @@
+p{
+    text-align: center;
+    border: 2px solid blue;
+    display: inline;
+    padding: 10px 5px  ;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    
+}

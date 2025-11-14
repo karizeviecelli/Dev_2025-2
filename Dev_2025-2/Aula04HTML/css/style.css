@@ -1,0 +1,93 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    background-color: #f9fafb;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+
+h1 {
+    color: #2563eb; 
+    text-align: center;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+
+
+fieldset {
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+button {
+    margin: 10px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #2563eb;
+    color: #fff;
+}
+
+button:hover {
+    background: #1d4ed8;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
+    transform: translateY(-2px);
+}
+
+
+section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+ul,li{
+    text-decoration: none;
+    display: inline-flex;
+    margin: 10px;
+    
+    
+}
+nav{
+    background-color: silver;
+    display: flex;
+    justify-content: center;
+    
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+li{
+    margin: 10px;
+    padding: 3px;
+}
+
+
+
+
